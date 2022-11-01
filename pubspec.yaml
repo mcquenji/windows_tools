@@ -1,4 +1,4 @@
-name: windows_tools
+name: windows_tools_engine
 description: Provides some tooling for Windows
 version: 0.0.1
 homepage: https://github.com/necodeIT/lb_planner
