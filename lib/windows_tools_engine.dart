@@ -3,6 +3,7 @@ library windows_tools_engine;
 export 'models/environment_entry.dart';
 export 'models/environment_variable.dart';
 
+import 'dart:convert';
 import 'dart:io';
 import 'package:riverpod/riverpod.dart';
 import 'package:path_provider/path_provider.dart';
