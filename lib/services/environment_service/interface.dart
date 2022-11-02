@@ -3,7 +3,7 @@ part of windows_tools_engine;
 /// Manages environment variables.
 abstract class IEnvironmentService {
   /// Gets the environment variables.
-  Future<List<EnvironmentVariable>> getEnvironmentVariables();
+  getEnvironmentVariables();
 
   /// Sets the environment [variables].
   void setEnvironmentVariables(List<EnvironmentVariable> variables);

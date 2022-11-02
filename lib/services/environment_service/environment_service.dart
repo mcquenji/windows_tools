@@ -6,7 +6,7 @@ class EnvironmentService extends IEnvironmentService {
   RegistryKey get reg => Registry.openPath(RegistryHive.currentUser, path: 'Environment', desiredAccessRights: AccessRights.allAccess);
 
   @override
-  Future<List<EnvironmentVariable>> getEnvironmentVariables() async {
+  getEnvironmentVariables() {
     // get all environment variables with set command
 
     // parse the result
@@ -115,9 +115,14 @@ class EnvironmentService extends IEnvironmentService {
 
     entries[entryIndex] = newEntry;
 
-    variables[index] = variables[index].copyWith(entries: entries);
+    var newVariables = variables.toList();
 
-    return variables;
+    newVariables[index] = variables[index].copyWith(entries: entries);
+
+    log(entry.toString());
+    log(newEntry.toString());
+
+    return newVariables;
   }
 
   @override
@@ -134,9 +139,11 @@ class EnvironmentService extends IEnvironmentService {
 
     entries.removeAt(entryIndex);
 
-    variables[index] = variables[index].copyWith(entries: entries);
+    var newVariables = variables.toList();
 
-    return variables;
+    newVariables[index] = variables[index].copyWith(entries: entries);
+
+    return newVariables;
   }
 
   @override
@@ -149,8 +156,10 @@ class EnvironmentService extends IEnvironmentService {
 
     entries.add(entry);
 
-    variables[index] = variables[index].copyWith(entries: entries);
+    var newVariables = variables.toList();
 
-    return variables;
+    newVariables[index] = variables[index].copyWith(entries: entries);
+
+    return newVariables;
   }
 }

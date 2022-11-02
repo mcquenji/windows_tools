@@ -21,7 +21,7 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
 
   /// Refreshes the environment variables.
   Future<void> refresh() async {
-    var reg = await _env.getEnvironmentVariables();
+    var reg = _env.getEnvironmentVariables();
     var local = await _disk.load();
 
     if (local == null) {
@@ -36,7 +36,7 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   }
 
   /// Enables the given [entry].
-  enableEntry(EnvironmentEntry entry, bool enabled) {
+  void enableEntry(EnvironmentEntry entry, bool enabled) {
     state = _env.replaceEntry(state, entry, entry.copyWith(enabled: enabled));
 
     var index = _env.getVariableIndex(state, entry.parent);
@@ -47,29 +47,29 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   }
 
   /// Adds the given [entry].
-  Future<void> addEntry(EnvironmentEntry entry) async {
+  void addEntry(EnvironmentEntry entry) {
     state = _env.addEntry(state, entry);
 
     var index = _env.getVariableIndex(state, entry.parent);
 
     _env.setEnvironmentVariable(state[index]);
 
-    await _disk.save(state);
+    _disk.save(state);
   }
 
   /// Removes the given [entry].
-  Future<void> removeEntry(EnvironmentEntry entry) async {
+  void removeEntry(EnvironmentEntry entry) {
     state = _env.removeEntry(state, entry);
 
     var index = _env.getVariableIndex(state, entry.parent);
 
     _env.setEnvironmentVariable(state[index]);
 
-    await _disk.save(state);
+    _disk.save(state);
   }
 
   /// Updates the given [entry].
-  updateEntry(EnvironmentEntry entry, String value) {
+  void updateEntry(EnvironmentEntry entry, String value) {
     state = _env.replaceEntry(state, entry, entry.copyWith(value: value));
 
     var index = _env.getVariableIndex(state, entry.parent);
