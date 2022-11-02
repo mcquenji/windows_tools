@@ -7,6 +7,8 @@ part 'environment_entry.g.dart';
 
 /// An entry in an environment variable.
 class EnvironmentEntry with _$EnvironmentEntry {
+  const EnvironmentEntry._();
+
   /// An entry in an environment variable.
   const factory EnvironmentEntry({
     /// The string value of the entry.
@@ -18,6 +20,9 @@ class EnvironmentEntry with _$EnvironmentEntry {
     /// The name of the environment variable.
     required String parent,
   }) = _EnvironmentEntry;
+
+  /// Whether the entry is disabled.
+  bool get disabled => !enabled;
 
   /// Creates an [EnvironmentEntry] from a JSON object.
   factory EnvironmentEntry.fromJson(Map<String, dynamic> json) => _$EnvironmentEntryFromJson(json);

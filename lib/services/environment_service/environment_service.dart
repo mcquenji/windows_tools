@@ -2,35 +2,33 @@ part of windows_tools_engine;
 
 /// Manages environment variables.
 class EnvironmentService extends IEnvironmentService {
+  /// The registry key that contains the environment variables.
+  RegistryKey get reg => Registry.openPath(RegistryHive.currentUser, path: 'Environment', desiredAccessRights: AccessRights.allAccess);
+
   @override
   Future<List<EnvironmentVariable>> getEnvironmentVariables() async {
     // get all environment variables with set command
 
-    final env = await Process.run('set', [], runInShell: true);
-
     // parse the result
-
-    final lines = env.stdout.toString().split('\r');
 
     final variables = <EnvironmentVariable>[];
 
-    for (final line in lines) {
-      final parts = line.split('=');
+    for (final variable in reg.values) {
+      // ignore empty variables
 
-      if (parts.length < 2) continue;
-
-      final name = parts[0].trim();
-      final value = parts[1];
-
-      final values = value.split(';');
+      final values = variable.data.toString().split(';');
 
       final entries = <EnvironmentEntry>[];
 
       for (final value in values) {
-        entries.add(EnvironmentEntry(value: value, enabled: true, parent: name));
+        // ignore empty values
+
+        if (value.isEmpty) continue;
+
+        entries.add(EnvironmentEntry(value: value, enabled: true, parent: variable.name));
       }
 
-      variables.add(EnvironmentVariable(name: name, entries: entries));
+      variables.add(EnvironmentVariable(name: variable.name, entries: entries));
     }
 
     return variables;
@@ -38,14 +36,13 @@ class EnvironmentService extends IEnvironmentService {
 
   @override
   Future<void> setEnvironmentVariable(EnvironmentVariable variable) async {
-    final value = variable.entries.where((e) => e.enabled).map((e) => e.value).join(';');
+    final entries = variable.entries.where((e) => e.enabled).map((e) => e.value).join(';');
 
-    log('Setting environment variable ${variable.name} to $value');
+    var value = RegistryValue(variable.name, RegistryValueType.string, entries);
 
-    // set the environment variable with setx command
-    var p = await Process.run('set', ["${variable.name}=$value"], runInShell: true);
+    reg.createValue(value);
 
-    log('Exit code: ${p.exitCode}', error: p.exitCode != 0 ? "${p.stdout}\nErr:\n${p.stderr}" : null);
+    log("Set environment variable '${variable.name}' to '$entries'");
   }
 
   @override
@@ -75,10 +72,27 @@ class EnvironmentService extends IEnvironmentService {
         if (!localEntries.any((e) => e.value == entry.value)) {
           localEntries.add(entry);
 
+          log("Added entry '${entry.value}' to '${variable.name}'");
+
           continue;
         }
 
+        var localEntry = localEntries[index];
+
+        if (localEntry.disabled) log("Enabled entry '${entry.value}' in '${variable.name}'");
+
         localEntries[index] = entry;
+      }
+
+      // set all entries that are not in b to disabled
+      for (final entry in localEntries) {
+        if (!variable.entries.any((e) => e.value == entry.value)) {
+          var index = localEntries.indexOf(entry);
+
+          localEntries[index] = entry.copyWith(enabled: false);
+
+          log("Disabled entry '${entry.value}' in '${variable.name}'");
+        }
       }
 
       a[index] = variable.copyWith(entries: localEntries);

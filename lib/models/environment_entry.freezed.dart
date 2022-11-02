@@ -123,9 +123,10 @@ class __$$_EnvironmentEntryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EnvironmentEntry implements _EnvironmentEntry {
+class _$_EnvironmentEntry extends _EnvironmentEntry {
   const _$_EnvironmentEntry(
-      {required this.value, required this.enabled, required this.parent});
+      {required this.value, required this.enabled, required this.parent})
+      : super._();
 
   factory _$_EnvironmentEntry.fromJson(Map<String, dynamic> json) =>
       _$$_EnvironmentEntryFromJson(json);
@@ -175,11 +176,12 @@ class _$_EnvironmentEntry implements _EnvironmentEntry {
   }
 }
 
-abstract class _EnvironmentEntry implements EnvironmentEntry {
+abstract class _EnvironmentEntry extends EnvironmentEntry {
   const factory _EnvironmentEntry(
       {required final String value,
       required final bool enabled,
       required final String parent}) = _$_EnvironmentEntry;
+  const _EnvironmentEntry._() : super._();
 
   factory _EnvironmentEntry.fromJson(Map<String, dynamic> json) =
       _$_EnvironmentEntry.fromJson;

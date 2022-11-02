@@ -8,6 +8,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:riverpod/riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:win32_registry/win32_registry.dart';
 
 // Models
 
