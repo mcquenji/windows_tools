@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:system_theme/system_theme.dart';
+import 'package:windows_tools/helpers.dart';
 import 'package:windows_tools/routes.dart';
 import 'package:nekolib_ui/core.dart';
 
@@ -46,6 +47,10 @@ class App extends StatelessWidget {
           scaffoldBackgroundColor: Colors.grey[10],
           accentColor: accentColor,
         ),
+        localizationsDelegates: const [
+          ...AppLocalizations.localizationsDelegates,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
         title: 'Windows Tools',
         home: const ScaffoldPage(
           content: Padding(

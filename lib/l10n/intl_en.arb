@@ -1,1 +1,21 @@
-{}
+{
+    "@environmentVariables_name": {
+        "description": "The display text of the environment variable name",
+        "placeholders": {
+            "name": {
+                "example": "MyVariable",
+                "type": "String"
+            },
+            "amount": {
+                "example": "100",
+                "type": "int"
+            }
+        }
+    },
+    "environmentVariables_refresh_tooltip": "Refresh",
+    "environmentVariables_new_tooltip": "Create new",
+    "environmentVariables_delete_tooltip": "Delete",
+    "environmentVariables_toggle_tooltip": "Toggle",
+    "environmentVariables_edit_tooltip": "Edit",
+    "environmentVariables_name": "{name} ({amount})"
+}

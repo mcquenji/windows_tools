@@ -28,9 +28,12 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(entry.value),
-            ToggleSwitch(
-              checked: entry.enabled,
-              onChanged: (value) => controller.enableEntry(entry, value),
+            Tooltip(
+              message: t.environmentVariables_toggle_tooltip,
+              child: ToggleSwitch(
+                checked: entry.enabled,
+                onChanged: (value) => controller.enableEntry(entry, value),
+              ),
             ),
           ],
         ),

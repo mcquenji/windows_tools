@@ -20,6 +20,20 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(name, amount) => "${name} (${amount})";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "environmentVariables_delete_tooltip":
+            MessageLookupByLibrary.simpleMessage("Delete"),
+        "environmentVariables_edit_tooltip":
+            MessageLookupByLibrary.simpleMessage("Edit"),
+        "environmentVariables_name": m0,
+        "environmentVariables_new_tooltip":
+            MessageLookupByLibrary.simpleMessage("Create new"),
+        "environmentVariables_refresh_tooltip":
+            MessageLookupByLibrary.simpleMessage("Refresh"),
+        "environmentVariables_toggle_tooltip":
+            MessageLookupByLibrary.simpleMessage("Toggle")
+      };
 }

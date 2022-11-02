@@ -17,7 +17,12 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
     var index = ref.watch(environmentVariablesProvider).indexOf(widget.variable);
 
     return Expander(
-      header: Text(widget.variable.name),
+      header: Text(
+        t.environmentVariables_name(
+          widget.variable.name,
+          widget.variable.entries.length,
+        ),
+      ),
       content: Column(
         children: [
           for (var i = 0; i < widget.variable.entries.length; i++) ...[

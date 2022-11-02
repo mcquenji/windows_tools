@@ -49,6 +49,66 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Refresh`
+  String get environmentVariables_refresh_tooltip {
+    return Intl.message(
+      'Refresh',
+      name: 'environmentVariables_refresh_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create new`
+  String get environmentVariables_new_tooltip {
+    return Intl.message(
+      'Create new',
+      name: 'environmentVariables_new_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get environmentVariables_delete_tooltip {
+    return Intl.message(
+      'Delete',
+      name: 'environmentVariables_delete_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toggle`
+  String get environmentVariables_toggle_tooltip {
+    return Intl.message(
+      'Toggle',
+      name: 'environmentVariables_toggle_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get environmentVariables_edit_tooltip {
+    return Intl.message(
+      'Edit',
+      name: 'environmentVariables_edit_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{name} ({amount})`
+  String environmentVariables_name(String name, int amount) {
+    return Intl.message(
+      '$name ($amount)',
+      name: 'environmentVariables_name',
+      desc: 'The display text of the environment variable name',
+      args: [name, amount],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
