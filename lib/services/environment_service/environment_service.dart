@@ -35,7 +35,7 @@ class EnvironmentService extends IEnvironmentService {
   }
 
   @override
-  Future<void> setEnvironmentVariable(EnvironmentVariable variable) async {
+  setEnvironmentVariable(EnvironmentVariable variable) {
     final entries = variable.entries.where((e) => e.enabled).map((e) => e.value).join(';');
 
     var value = RegistryValue(variable.name, RegistryValueType.string, entries);
@@ -46,9 +46,9 @@ class EnvironmentService extends IEnvironmentService {
   }
 
   @override
-  Future<void> setEnvironmentVariables(List<EnvironmentVariable> variables) async {
+  setEnvironmentVariables(List<EnvironmentVariable> variables) {
     for (final variable in variables) {
-      await setEnvironmentVariable(variable);
+      setEnvironmentVariable(variable);
     }
   }
 

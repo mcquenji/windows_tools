@@ -6,10 +6,10 @@ abstract class IEnvironmentService {
   Future<List<EnvironmentVariable>> getEnvironmentVariables();
 
   /// Sets the environment [variables].
-  Future<void> setEnvironmentVariables(List<EnvironmentVariable> variables);
+  void setEnvironmentVariables(List<EnvironmentVariable> variables);
 
   /// Sets the environment [variable].
-  Future<void> setEnvironmentVariable(EnvironmentVariable variable);
+  void setEnvironmentVariable(EnvironmentVariable variable);
 
   /// Merges [a] into [b].
   List<EnvironmentVariable> merge(List<EnvironmentVariable> a, List<EnvironmentVariable> b);

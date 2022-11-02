@@ -36,54 +36,46 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   }
 
   /// Enables the given [entry].
-  Future<void> enableEntry(EnvironmentEntry entry, bool enabled) async {
-    var vars = _env.replaceEntry(state, entry, entry.copyWith(enabled: enabled));
+  enableEntry(EnvironmentEntry entry, bool enabled) {
+    state = _env.replaceEntry(state, entry, entry.copyWith(enabled: enabled));
 
-    var index = _env.getVariableIndex(vars, entry.parent);
+    var index = _env.getVariableIndex(state, entry.parent);
 
-    await _env.setEnvironmentVariable(vars[index]);
+    _env.setEnvironmentVariable(state[index]);
 
-    state = vars;
-
-    await _disk.save(state);
+    _disk.save(state);
   }
 
   /// Adds the given [entry].
   Future<void> addEntry(EnvironmentEntry entry) async {
-    var vars = _env.addEntry(state, entry);
+    state = _env.addEntry(state, entry);
 
-    var index = _env.getVariableIndex(vars, entry.parent);
+    var index = _env.getVariableIndex(state, entry.parent);
 
-    await _env.setEnvironmentVariable(vars[index]);
-
-    state = vars;
+    _env.setEnvironmentVariable(state[index]);
 
     await _disk.save(state);
   }
 
   /// Removes the given [entry].
   Future<void> removeEntry(EnvironmentEntry entry) async {
-    var vars = _env.removeEntry(state, entry);
+    state = _env.removeEntry(state, entry);
 
-    var index = _env.getVariableIndex(vars, entry.parent);
+    var index = _env.getVariableIndex(state, entry.parent);
 
-    await _env.setEnvironmentVariable(vars[index]);
-
-    state = vars;
+    _env.setEnvironmentVariable(state[index]);
 
     await _disk.save(state);
   }
 
   /// Updates the given [entry].
-  Future<void> updateEntry(EnvironmentEntry entry, String value) async {
-    var vars = _env.replaceEntry(state, entry, entry.copyWith(value: value));
+  updateEntry(EnvironmentEntry entry, String value) {
+    state = _env.replaceEntry(state, entry, entry.copyWith(value: value));
 
-    var index = _env.getVariableIndex(vars, entry.parent);
+    var index = _env.getVariableIndex(state, entry.parent);
 
-    await _env.setEnvironmentVariable(vars[index]);
+    _env.setEnvironmentVariable(state[index]);
 
-    state = vars;
-
-    await _disk.save(state);
+    _disk.save(state);
   }
 }
