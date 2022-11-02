@@ -39,7 +39,9 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   Future<void> enableEntry(EnvironmentEntry entry, bool enabled) async {
     var vars = _env.replaceEntry(state, entry, entry.copyWith(enabled: enabled));
 
-    await _env.setEnvironmentVariables(state);
+    var index = _env.getVariableIndex(vars, entry.parent);
+
+    await _env.setEnvironmentVariable(vars[index]);
 
     state = vars;
 
@@ -50,7 +52,9 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   Future<void> addEntry(EnvironmentEntry entry) async {
     var vars = _env.addEntry(state, entry);
 
-    await _env.setEnvironmentVariables(state);
+    var index = _env.getVariableIndex(vars, entry.parent);
+
+    await _env.setEnvironmentVariable(vars[index]);
 
     state = vars;
 
@@ -61,7 +65,9 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   Future<void> removeEntry(EnvironmentEntry entry) async {
     var vars = _env.removeEntry(state, entry);
 
-    await _env.setEnvironmentVariables(state);
+    var index = _env.getVariableIndex(vars, entry.parent);
+
+    await _env.setEnvironmentVariable(vars[index]);
 
     state = vars;
 
@@ -72,7 +78,9 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   Future<void> updateEntry(EnvironmentEntry entry, String value) async {
     var vars = _env.replaceEntry(state, entry, entry.copyWith(value: value));
 
-    await _env.setEnvironmentVariables(state);
+    var index = _env.getVariableIndex(vars, entry.parent);
+
+    await _env.setEnvironmentVariable(vars[index]);
 
     state = vars;
 

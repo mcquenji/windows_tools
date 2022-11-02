@@ -17,7 +17,9 @@ class EnvironmentService extends IEnvironmentService {
     for (final line in lines) {
       final parts = line.split('=');
 
-      final name = parts[0];
+      if (parts.length < 2) continue;
+
+      final name = parts[0].trim();
       final value = parts[1];
 
       final values = value.split(';');
@@ -36,10 +38,14 @@ class EnvironmentService extends IEnvironmentService {
 
   @override
   Future<void> setEnvironmentVariable(EnvironmentVariable variable) async {
-    final value = variable.entries.map((e) => e.value).join(';');
+    final value = variable.entries.where((e) => e.enabled).map((e) => e.value).join(';');
+
+    log('Setting environment variable ${variable.name} to $value');
 
     // set the environment variable with setx command
-    await Process.run('setx', [variable.name, value], runInShell: true);
+    var p = await Process.run('set', ["${variable.name}=$value"], runInShell: true);
+
+    log('Exit code: ${p.exitCode}', error: p.exitCode != 0 ? "${p.stdout}\nErr:\n${p.stderr}" : null);
   }
 
   @override
