@@ -119,9 +119,6 @@ class EnvironmentService extends IEnvironmentService {
 
     newVariables[index] = variables[index].copyWith(entries: entries);
 
-    log(entry.toString());
-    log(newEntry.toString());
-
     return newVariables;
   }
 
