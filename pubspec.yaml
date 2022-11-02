@@ -33,6 +33,7 @@ dependencies:
   fluent_ui: ^4.0.3
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.1.1
   nekolib_ui:
     git:
       url: https://github.com/necodeIT/nekolib.git
@@ -43,18 +44,23 @@ dependencies:
       url: https://github.com/necodeIT/nekolib.git
       ref: flutter3
       path: utils
+  system_theme: ^2.0.0
+  win32_registry: ^1.0.2
   window_manager: ^0.2.2
+  windows_tools_engine:
+    git:
+      url: https://github.com/necodeIT/windows-tools.git
+      ref: engine
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+# For development only
+# dependency_overrides:
+#   windows_tools_engine:
+#     path: ../windows-tools-engine
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
