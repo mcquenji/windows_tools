@@ -109,6 +109,16 @@ class S {
       args: [name, amount],
     );
   }
+
+  /// `Add new entry`
+  String get environmentVariables_newEntry {
+    return Intl.message(
+      'Add new entry',
+      name: 'environmentVariables_newEntry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

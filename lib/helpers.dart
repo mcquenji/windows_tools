@@ -7,3 +7,4 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'helpers/localization.dart';
+part 'helpers/theme.dart';

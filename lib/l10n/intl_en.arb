@@ -17,5 +17,6 @@
     "environmentVariables_delete_tooltip": "Delete",
     "environmentVariables_toggle_tooltip": "Toggle",
     "environmentVariables_edit_tooltip": "Edit",
-    "environmentVariables_name": "{name} ({amount})"
+    "environmentVariables_name": "{name} ({amount})",
+    "environmentVariables_newEntry": "Add new entry"
 }

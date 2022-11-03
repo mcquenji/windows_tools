@@ -32,20 +32,23 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: FluentApp(
-        // theme: ThemeData(
-        //   cardColor: primaryColor,
-        //   scaffoldBackgroundColor: secondaryColor,
-        //   activeColor: primaryColor,
-        //   accentColor: AccentColor.swatch({"normal": accentColor}),
-        // ),
         themeMode: ThemeMode.system,
         darkTheme: ThemeData(
           brightness: Brightness.dark,
           accentColor: accentColor,
+          scaffoldBackgroundColor: const Color(0xFF202020),
+          cardColor: const Color(0xFF2b2b2b),
+          resources: const ResourceDictionary.dark(
+            cardBackgroundFillColorSecondary: Color(0xFF323232),
+          ),
         ),
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.grey[10],
+          scaffoldBackgroundColor: const Color(0xFFf3f3f3),
           accentColor: accentColor,
+          cardColor: const Color(0xFFfbfbfb),
+          resources: const ResourceDictionary.light(
+            cardBackgroundFillColorSecondary: Color(0xFFfcfcfc),
+          ),
         ),
         localizationsDelegates: const [
           ...AppLocalizations.localizationsDelegates,

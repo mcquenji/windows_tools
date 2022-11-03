@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "environmentVariables_edit_tooltip":
             MessageLookupByLibrary.simpleMessage("Edit"),
         "environmentVariables_name": m0,
+        "environmentVariables_newEntry":
+            MessageLookupByLibrary.simpleMessage("Add new entry"),
         "environmentVariables_new_tooltip":
             MessageLookupByLibrary.simpleMessage("Create new"),
         "environmentVariables_refresh_tooltip":
