@@ -2,25 +2,47 @@ part of windows_tools_widgets;
 
 /// Displays a single environment variable.
 class EnvironmentVariableWidget extends ConsumerStatefulWidget {
+  /// The environment variable to display.
   final EnvironmentVariable variable;
 
   /// Displays a single environment variable.
   const EnvironmentVariableWidget({Key? key, required this.variable}) : super(key: key);
 
-  static const double expanderHeaderHeight = 65;
-  static const double expanderHeaderHoverHeight = expanderHeaderHeight + 5;
+  /// The width of the entry search field.
+  static const double entrySearchWidth = 250;
+
+  // static const double expanderHeaderHoverHeight = expanderHeaderHeight + 5;
 
   @override
   ConsumerState<EnvironmentVariableWidget> createState() => _EnvironmentVariableWidgetState();
 }
 
 class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableWidget> {
+  final _searchController = TextEditingController();
+
+  @override
+  void initState() {
+    _searchController.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var index = ref.watch(environmentVariablesProvider).indexOf(widget.variable);
 
+    var entries = widget.variable.entries.where((element) => element.value.containsCaseInsensitive(_searchController.text)).toList();
+
     return Expander(
-      headerHeight: EnvironmentVariableWidget.expanderHeaderHeight,
+      headerHeight: ExpanderCard.expanderHeaderHeight,
       contentBackgroundColor: theme.cardColor,
       contentPadding: EdgeInsets.zero,
       header: Text(
@@ -39,12 +61,21 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
       ),
       content: Column(
         children: [
-          for (var i = 0; i < widget.variable.entries.length; i++) ...[
+          ExpanderCard(
+            title: Text(t.global_seearch_label),
+            trailing: SizedBox(
+              width: EnvironmentVariableWidget.entrySearchWidth,
+              child: TextBox(
+                controller: _searchController,
+                placeholder: t.global_search_placeholder,
+              ),
+            ),
+          ),
+          for (var entry in entries) ...[
             EnvironmentEntryWidget(
-              entryId: i,
+              entryId: widget.variable.entries.indexOf(entry),
               variableId: index,
             ),
-            // if (i != widget.variable.entries.length - 1) NcSpacing.xs(),
           ],
         ],
       ),

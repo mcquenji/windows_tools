@@ -119,6 +119,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Environment Variables`
+  String get environmentVariables_title {
+    return Intl.message(
+      'Environment Variables',
+      name: 'environmentVariables_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get global_seearch_label {
+    return Intl.message(
+      'Search',
+      name: 'global_seearch_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search...`
+  String get global_search_placeholder {
+    return Intl.message(
+      'Search...',
+      name: 'global_search_placeholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `404 Not Found`
+  String get global_404 {
+    return Intl.message(
+      '404 Not Found',
+      name: 'global_404',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings_title {
+    return Intl.message(
+      'Settings',
+      name: 'settings_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

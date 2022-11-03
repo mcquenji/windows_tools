@@ -35,7 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create new"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Refresh"),
+        "environmentVariables_title":
+            MessageLookupByLibrary.simpleMessage("Environment Variables"),
         "environmentVariables_toggle_tooltip":
-            MessageLookupByLibrary.simpleMessage("Toggle")
+            MessageLookupByLibrary.simpleMessage("Toggle"),
+        "global_404": MessageLookupByLibrary.simpleMessage("404 Not Found"),
+        "global_search_placeholder":
+            MessageLookupByLibrary.simpleMessage("Search..."),
+        "global_seearch_label": MessageLookupByLibrary.simpleMessage("Search"),
+        "settings_title": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

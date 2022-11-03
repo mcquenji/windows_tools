@@ -22,23 +22,13 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
 
     return GestureDetector(
       onTap: () => controller.enableEntry(entry, !entry.enabled),
-      child: SizedBox(
-        height: EnvironmentVariableWidget.expanderHeaderHeight,
-        child: Card(
-          backgroundColor: theme.resources.cardBackgroundFillColorSecondary,
-          margin: EdgeInsets.zero,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(entry.value),
-              Tooltip(
-                message: t.environmentVariables_toggle_tooltip,
-                child: ToggleSwitch(
-                  checked: entry.enabled,
-                  onChanged: (value) => controller.enableEntry(entry, value),
-                ),
-              ),
-            ],
+      child: ExpanderCard(
+        title: Text(entry.value),
+        trailing: Tooltip(
+          message: t.environmentVariables_toggle_tooltip,
+          child: ToggleSwitch(
+            checked: entry.enabled,
+            onChanged: (value) => controller.enableEntry(entry, value),
           ),
         ),
       ),

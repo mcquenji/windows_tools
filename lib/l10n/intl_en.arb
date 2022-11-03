@@ -18,5 +18,10 @@
     "environmentVariables_toggle_tooltip": "Toggle",
     "environmentVariables_edit_tooltip": "Edit",
     "environmentVariables_name": "{name} ({amount})",
-    "environmentVariables_newEntry": "Add new entry"
+    "environmentVariables_newEntry": "Add new entry",
+    "environmentVariables_title": "Environment Variables",
+    "global_seearch_label": "Search",
+    "global_search_placeholder": "Search...",
+    "global_404": "404 Not Found",
+    "settings_title": "Settings"
 }

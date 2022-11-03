@@ -11,7 +11,9 @@ void main() {
   runApp(const App());
 }
 
+/// Root app widget.
 class App extends StatelessWidget {
+  /// Root app widget.
   const App({super.key});
 
   /// Builder for convinience.
@@ -32,6 +34,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: FluentApp(
+        debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
         darkTheme: ThemeData(
           brightness: Brightness.dark,
@@ -55,12 +58,7 @@ class App extends StatelessWidget {
         ],
         supportedLocales: AppLocalizations.supportedLocales,
         title: 'Windows Tools',
-        home: const ScaffoldPage(
-          content: Padding(
-            padding: EdgeInsets.all(NcSpacing.xlSpacing),
-            child: EnvironmentVariablesRoute(),
-          ),
-        ),
+        home: const NavRouter(),
       ),
     );
   }
