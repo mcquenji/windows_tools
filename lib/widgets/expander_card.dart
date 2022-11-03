@@ -53,13 +53,13 @@ class ExpanderCard extends StatelessWidget {
             backgroundColor: color,
             child: Padding(
               padding: contentPadding,
-              child: IgnorePointer(
-                child: ListTile(
-                  leading: leading,
-                  title: title,
-                  trailing: trailing,
-                  subtitle: subtitle,
-                ),
+              child: ListTile(
+                tileColor: ButtonState.all(Colors.transparent),
+                onPressed: onPressed,
+                leading: leading,
+                title: title,
+                trailing: trailing,
+                subtitle: subtitle,
               ),
             ),
           ),
