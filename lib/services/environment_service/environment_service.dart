@@ -61,7 +61,7 @@ class EnvironmentService extends IEnvironmentService {
   merge(a, b) {
     // check if there are new variables in b
     for (final variable in b) {
-      final index = a.indexWhere((e) => e.name == variable.name);
+      final index = getVariableIndex(a, variable.identifier);
 
       if (index == -1) {
         a.add(variable);
