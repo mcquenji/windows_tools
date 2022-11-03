@@ -47,7 +47,9 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   }
 
   /// Adds the given [entry].
-  void addEntry(EnvironmentEntry entry) {
+  void addEntry(String parent, String value) {
+    var entry = EnvironmentEntry(value: value, enabled: true, parent: parent);
+
     state = _env.addEntry(state, entry);
 
     var index = _env.getVariableIndex(state, entry.parent);

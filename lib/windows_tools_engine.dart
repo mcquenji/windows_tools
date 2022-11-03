@@ -14,6 +14,7 @@ import 'package:win32_registry/win32_registry.dart';
 
 import 'models/environment_entry.dart';
 import 'models/environment_variable.dart';
+part 'models/environment_variable_context.dart';
 
 // Providers
 

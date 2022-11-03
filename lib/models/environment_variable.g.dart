@@ -13,6 +13,8 @@ _$_EnvironmentVariable _$$_EnvironmentVariableFromJson(
       entries: (json['entries'] as List<dynamic>)
           .map((e) => EnvironmentEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
+      context:
+          $enumDecode(_$EnvironmentVariableContextEnumMap, json['context']),
     );
 
 Map<String, dynamic> _$$_EnvironmentVariableToJson(
@@ -20,4 +22,10 @@ Map<String, dynamic> _$$_EnvironmentVariableToJson(
     <String, dynamic>{
       'name': instance.name,
       'entries': instance.entries,
+      'context': _$EnvironmentVariableContextEnumMap[instance.context]!,
     };
+
+const _$EnvironmentVariableContextEnumMap = {
+  EnvironmentVariableContext.user: 'user',
+  EnvironmentVariableContext.machine: 'machine',
+};

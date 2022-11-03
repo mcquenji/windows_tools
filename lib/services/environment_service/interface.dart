@@ -23,8 +23,8 @@ abstract class IEnvironmentService {
   /// Adds the given [entry] to the [variables].
   List<EnvironmentVariable> addEntry(List<EnvironmentVariable> variables, EnvironmentEntry entry);
 
-  /// Gets the index of the variable with the given [name] in the [variables].
+  /// Gets the index of the variable with the given [identifier] in the [variables].
   ///
   /// Returns -1 if the variable is not found.
-  int getVariableIndex(List<EnvironmentVariable> variables, String name) => variables.indexWhere((e) => e.name == name);
+  int getVariableIndex(List<EnvironmentVariable> variables, String identifier) => variables.indexWhere((e) => e.identifier == identifier);
 }

@@ -26,6 +26,9 @@ mixin _$EnvironmentVariable {
   /// The entries in the environment variable.
   List<EnvironmentEntry> get entries => throw _privateConstructorUsedError;
 
+  /// The context of the environment variable.
+  EnvironmentVariableContext get context => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EnvironmentVariableCopyWith<EnvironmentVariable> get copyWith =>
@@ -38,7 +41,10 @@ abstract class $EnvironmentVariableCopyWith<$Res> {
           EnvironmentVariable value, $Res Function(EnvironmentVariable) then) =
       _$EnvironmentVariableCopyWithImpl<$Res, EnvironmentVariable>;
   @useResult
-  $Res call({String name, List<EnvironmentEntry> entries});
+  $Res call(
+      {String name,
+      List<EnvironmentEntry> entries,
+      EnvironmentVariableContext context});
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ class _$EnvironmentVariableCopyWithImpl<$Res, $Val extends EnvironmentVariable>
   $Res call({
     Object? name = null,
     Object? entries = null,
+    Object? context = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -66,6 +73,10 @@ class _$EnvironmentVariableCopyWithImpl<$Res, $Val extends EnvironmentVariable>
           ? _value.entries
           : entries // ignore: cast_nullable_to_non_nullable
               as List<EnvironmentEntry>,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as EnvironmentVariableContext,
     ) as $Val);
   }
 }
@@ -78,7 +89,10 @@ abstract class _$$_EnvironmentVariableCopyWith<$Res>
       __$$_EnvironmentVariableCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<EnvironmentEntry> entries});
+  $Res call(
+      {String name,
+      List<EnvironmentEntry> entries,
+      EnvironmentVariableContext context});
 }
 
 /// @nodoc
@@ -94,6 +108,7 @@ class __$$_EnvironmentVariableCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? entries = null,
+    Object? context = null,
   }) {
     return _then(_$_EnvironmentVariable(
       name: null == name
@@ -104,16 +119,23 @@ class __$$_EnvironmentVariableCopyWithImpl<$Res>
           ? _value._entries
           : entries // ignore: cast_nullable_to_non_nullable
               as List<EnvironmentEntry>,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as EnvironmentVariableContext,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_EnvironmentVariable implements _EnvironmentVariable {
+class _$_EnvironmentVariable extends _EnvironmentVariable {
   const _$_EnvironmentVariable(
-      {required this.name, required final List<EnvironmentEntry> entries})
-      : _entries = entries;
+      {required this.name,
+      required final List<EnvironmentEntry> entries,
+      required this.context})
+      : _entries = entries,
+        super._();
 
   factory _$_EnvironmentVariable.fromJson(Map<String, dynamic> json) =>
       _$$_EnvironmentVariableFromJson(json);
@@ -132,9 +154,13 @@ class _$_EnvironmentVariable implements _EnvironmentVariable {
     return EqualUnmodifiableListView(_entries);
   }
 
+  /// The context of the environment variable.
+  @override
+  final EnvironmentVariableContext context;
+
   @override
   String toString() {
-    return 'EnvironmentVariable(name: $name, entries: $entries)';
+    return 'EnvironmentVariable(name: $name, entries: $entries, context: $context)';
   }
 
   @override
@@ -143,13 +169,14 @@ class _$_EnvironmentVariable implements _EnvironmentVariable {
         (other.runtimeType == runtimeType &&
             other is _$_EnvironmentVariable &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._entries, _entries));
+            const DeepCollectionEquality().equals(other._entries, _entries) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_entries));
+  int get hashCode => Object.hash(runtimeType, name,
+      const DeepCollectionEquality().hash(_entries), context);
 
   @JsonKey(ignore: true)
   @override
@@ -166,10 +193,13 @@ class _$_EnvironmentVariable implements _EnvironmentVariable {
   }
 }
 
-abstract class _EnvironmentVariable implements EnvironmentVariable {
+abstract class _EnvironmentVariable extends EnvironmentVariable {
   const factory _EnvironmentVariable(
-      {required final String name,
-      required final List<EnvironmentEntry> entries}) = _$_EnvironmentVariable;
+          {required final String name,
+          required final List<EnvironmentEntry> entries,
+          required final EnvironmentVariableContext context}) =
+      _$_EnvironmentVariable;
+  const _EnvironmentVariable._() : super._();
 
   factory _EnvironmentVariable.fromJson(Map<String, dynamic> json) =
       _$_EnvironmentVariable.fromJson;
@@ -182,6 +212,10 @@ abstract class _EnvironmentVariable implements EnvironmentVariable {
 
   /// The entries in the environment variable.
   List<EnvironmentEntry> get entries;
+  @override
+
+  /// The context of the environment variable.
+  EnvironmentVariableContext get context;
   @override
   @JsonKey(ignore: true)
   _$$_EnvironmentVariableCopyWith<_$_EnvironmentVariable> get copyWith =>

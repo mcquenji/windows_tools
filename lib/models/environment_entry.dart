@@ -17,7 +17,7 @@ class EnvironmentEntry with _$EnvironmentEntry {
     /// Whether the entry is enabled.
     required bool enabled,
 
-    /// The name of the environment variable.
+    /// The identifier of the parent variable.
     required String parent,
   }) = _EnvironmentEntry;
 

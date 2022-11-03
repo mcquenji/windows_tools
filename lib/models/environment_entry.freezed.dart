@@ -26,7 +26,7 @@ mixin _$EnvironmentEntry {
   /// Whether the entry is enabled.
   bool get enabled => throw _privateConstructorUsedError;
 
-  /// The name of the environment variable.
+  /// The identifier of the parent variable.
   String get parent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -139,7 +139,7 @@ class _$_EnvironmentEntry extends _EnvironmentEntry {
   @override
   final bool enabled;
 
-  /// The name of the environment variable.
+  /// The identifier of the parent variable.
   @override
   final String parent;
 
@@ -196,7 +196,7 @@ abstract class _EnvironmentEntry extends EnvironmentEntry {
   bool get enabled;
   @override
 
-  /// The name of the environment variable.
+  /// The identifier of the parent variable.
   String get parent;
   @override
   @JsonKey(ignore: true)

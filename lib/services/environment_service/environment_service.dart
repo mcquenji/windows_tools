@@ -1,37 +1,42 @@
 part of windows_tools_engine;
 
+/// The registry key that contains the environment variables for the current user.
+RegistryKey get userReg => Registry.openPath(RegistryHive.currentUser, path: 'Environment', desiredAccessRights: AccessRights.allAccess);
+
+/// The registry key that contains the environment variables for all users.
+RegistryKey get machineReg => Registry.openPath(RegistryHive.localMachine, path: 'System\\CurrentControlSet\\Control\\Session Manager\\Environment', desiredAccessRights: AccessRights.allAccess);
+
 /// Manages environment variables.
 class EnvironmentService extends IEnvironmentService {
-  /// The registry key that contains the environment variables.
-  RegistryKey get reg => Registry.openPath(RegistryHive.currentUser, path: 'Environment', desiredAccessRights: AccessRights.allAccess);
-
   @override
   getEnvironmentVariables() {
-    // get all environment variables with set command
-
-    // parse the result
-
     final variables = <EnvironmentVariable>[];
 
-    for (final variable in reg.values) {
-      // ignore empty variables
+    for (final variable in userReg.values) {
+      variables.add(_extractVariable(variable, EnvironmentVariableContext.user));
+    }
 
-      final values = variable.data.toString().split(';');
-
-      final entries = <EnvironmentEntry>[];
-
-      for (final value in values) {
-        // ignore empty values
-
-        if (value.isEmpty) continue;
-
-        entries.add(EnvironmentEntry(value: value, enabled: true, parent: variable.name));
-      }
-
-      variables.add(EnvironmentVariable(name: variable.name, entries: entries));
+    for (final variable in machineReg.values) {
+      variables.add(_extractVariable(variable, EnvironmentVariableContext.machine));
     }
 
     return variables;
+  }
+
+  EnvironmentVariable _extractVariable(RegistryValue reg, EnvironmentVariableContext context) {
+    final values = reg.data.toString().split(';');
+
+    final entries = <EnvironmentEntry>[];
+
+    for (final value in values) {
+      // ignore empty values
+
+      if (value.isEmpty) continue;
+
+      entries.add(EnvironmentEntry(value: value, enabled: true, parent: "${reg.name}@$context"));
+    }
+
+    return EnvironmentVariable(name: reg.name, entries: entries, context: context);
   }
 
   @override
@@ -40,7 +45,7 @@ class EnvironmentService extends IEnvironmentService {
 
     var value = RegistryValue(variable.name, RegistryValueType.string, entries);
 
-    reg.createValue(value);
+    variable.context.reg.createValue(value);
 
     log("Set environment variable '${variable.name}' to '$entries'");
   }
