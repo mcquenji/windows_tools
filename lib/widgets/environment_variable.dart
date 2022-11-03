@@ -8,9 +8,6 @@ class EnvironmentVariableWidget extends ConsumerStatefulWidget {
   /// Displays a single environment variable.
   const EnvironmentVariableWidget({Key? key, required this.variable}) : super(key: key);
 
-  /// The width of the entry search field.
-  static const double entrySearchWidth = 250;
-
   // static const double expanderHeaderHoverHeight = expanderHeaderHeight + 5;
 
   @override
@@ -42,7 +39,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
     var entries = widget.variable.entries.where((element) => element.value.containsCaseInsensitive(_searchController.text)).toList();
 
     return Expander(
-      headerHeight: ExpanderCard.expanderHeaderHeight,
+      headerHeight: kExpanderHeaderHeight,
       contentBackgroundColor: theme.cardColor,
       contentPadding: EdgeInsets.zero,
       header: Text(
@@ -53,7 +50,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
       ),
       leading: Icon(
         widget.variable.context.isUser ? FluentIcons.person_24_filled : FluentIcons.globe_24_filled,
-        size: EnvironmentEntryWidget.iconSize,
+        size: kExpanderIconSize,
       ),
       trailing: Button(
         child: Text(t.environmentVariables_newEntry),
@@ -64,7 +61,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
           ExpanderCard(
             title: Text(t.global_seearch_label),
             trailing: SizedBox(
-              width: EnvironmentVariableWidget.entrySearchWidth,
+              width: kExpanderTrailingWidth,
               child: TextBox(
                 controller: _searchController,
                 placeholder: t.global_search_placeholder,

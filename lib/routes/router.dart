@@ -32,7 +32,7 @@ class _NavRouterState extends State<NavRouter> {
 
   List<PaneItem> get items => [
         item(
-          icon: FluentIcons.globe_desktop_24_filled,
+          icon: FluentIcons.globe_person_24_filled,
           title: t.environmentVariables_title,
           body: const EnvironmentVariablesRoute(),
         ),

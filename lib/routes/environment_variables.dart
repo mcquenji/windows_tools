@@ -50,16 +50,7 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
 
   @override
   Widget build(context) {
-    var variables = ref
-        .watch(environmentVariablesProvider)
-        .where(
-          (element) =>
-              element.name.containsCaseInsensitive(_searchController.text) ||
-              element.entries.any(
-                (entry) => entry.value.containsCaseInsensitive(_searchController.text),
-              ),
-        )
-        .toList();
+    var variables = ref.watch(environmentVariablesProvider).where((element) => element.name.containsCaseInsensitive(_searchController.text)).toList();
 
     return Column(
       children: [
@@ -103,7 +94,6 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
               for (var variable in variables) ...[
                 EnvironmentVariableWidget(
                   variable: variable,
-                  key: ValueKey(variable),
                 ),
                 NcSpacing.small(),
               ],

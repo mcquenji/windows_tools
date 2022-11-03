@@ -1,0 +1,29 @@
+{
+    "@environmentVariables_name": {
+        "description": "The display text of the environment variable name",
+        "placeholders": {
+            "name": {
+                "example": "MyVariable",
+                "type": "String"
+            },
+            "amount": {
+                "example": "100",
+                "type": "int"
+            }
+        }
+    },
+    "environmentVariables_refresh_tooltip": "Aktualisieren",
+    "environmentVariables_new_tooltip": "Neue Umgebungsvariable hinzufügen",
+    "environmentVariables_delete_tooltip": "Löschen",
+    "environmentVariables_toggle_tooltip": "Deaktivieren / Aktivieren",
+    "environmentVariables_edit_tooltip": "Bearbeiten",
+    "environmentVariables_name": "{name} ({amount})",
+    "environmentVariables_newEntry": "Neuer Eintrag",
+    "environmentVariables_title": "Umgebungsvariablen",
+    "global_seearch_label": "Suchen",
+    "global_search_placeholder": "Suchen...",
+    "global_404": "404 Nicht gefunden",
+    "settings_title": "Einstellungen",
+    "settings_general_language": "Sprache",
+    "settings_general": "Allgemein"
+}

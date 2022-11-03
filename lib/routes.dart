@@ -2,6 +2,7 @@ library windows_tools_routes;
 
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nekolib_ui/core.dart';
 import 'package:nekolib_utils/extensions.dart';
@@ -11,4 +12,5 @@ import 'helpers.dart';
 
 part 'routes/environment_variables.dart';
 part 'routes/router.dart';
-part 'routes/settings.dart';
+part 'routes/settings/settings.dart';
+part 'routes/settings/settings_general_update.dart';

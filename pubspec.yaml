@@ -34,6 +34,7 @@ dependencies:
   fluentui_system_icons: ^1.1.185
   flutter:
     sdk: flutter
+  flutter_localized_locales: ^2.0.3
   flutter_riverpod: ^2.1.1
   nekolib_ui:
     git:
@@ -45,6 +46,7 @@ dependencies:
       url: https://github.com/necodeIT/nekolib.git
       ref: flutter3
       path: utils
+  package_info_plus: ^3.0.1
   system_theme: ^2.0.0
   win32_registry: ^1.0.2
   window_manager: ^0.2.2
@@ -57,14 +59,15 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  msix: ^3.7.0
 
 dependency_overrides:
-# For development only
+  # For development only
   windows_tools_engine:
     path: ../windows-tools-engine
   fluent_ui:
     path: ../fluent_ui
-# Because of missing customizations in fluent_ui upstream
+  # Because of missing customizations in fluent_ui upstream
   # fluent_ui:
   #   git:
   #     url: https://github.com/bmceachnie/fluent_ui.git

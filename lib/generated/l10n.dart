@@ -169,6 +169,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Language`
+  String get settings_general_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_general_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get settings_general {
+    return Intl.message(
+      'General',
+      name: 'settings_general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check for updates automatically`
+  String get settings_general_update_autCheck {
+    return Intl.message(
+      'Check for updates automatically',
+      name: 'settings_general_update_autCheck',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check now`
+  String get settings_general_update_checkNow {
+    return Intl.message(
+      'Check now',
+      name: 'settings_general_update_checkNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred. Please try again later.`
+  String get settings_general_update_error {
+    return Intl.message(
+      'An unexpected error occurred. Please try again later.',
+      name: 'settings_general_update_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New version available`
+  String get settings_general_update_newVersion {
+    return Intl.message(
+      'New version available',
+      name: 'settings_general_update_newVersion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are using the latest version!`
+  String get settings_general_update_upToDate {
+    return Intl.message(
+      'You are using the latest version!',
+      name: 'settings_general_update_upToDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Install update`
+  String get settings_general_update_install {
+    return Intl.message(
+      'Install update',
+      name: 'settings_general_update_install',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Installing update ({progress}%)...`
+  String settings_general_update_installing(String progress) {
+    return Intl.message(
+      'Installing update ($progress%)...',
+      name: 'settings_general_update_installing',
+      desc: 'The display text of installation progress',
+      args: [progress],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -177,6 +267,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
     ];
   }
 

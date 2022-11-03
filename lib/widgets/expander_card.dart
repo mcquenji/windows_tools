@@ -8,45 +8,63 @@ class ExpanderCard extends StatelessWidget {
   /// The title of the card.
   final Widget title;
 
+  /// Subtitle underneath the title.
+  final Widget? subtitle;
+
+  /// On tap callback.
+  final VoidCallback? onPressed;
+
   /// Trailing widget at the end of the card.
   final Widget? trailing;
 
+  /// Padding of the content.
+  final EdgeInsetsGeometry contentPadding;
+
+  /// The background color of the content.
+  final ButtonState<Color>? backgroundColor;
+
   /// A card that resides in an [Expander].
-  const ExpanderCard({Key? key, this.leading, required this.title, this.trailing}) : super(key: key);
-
-  /// Padding used on the sides of the card.
-  static const double padding = 16;
-
-  /// The height of the expander header.
-  static const double expanderHeaderHeight = 65;
+  const ExpanderCard({
+    Key? key,
+    this.leading,
+    required this.title,
+    this.trailing,
+    this.contentPadding = const EdgeInsets.only(left: 16, right: 16),
+    this.backgroundColor,
+    this.subtitle,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: expanderHeaderHeight,
-      child: Card(
-        backgroundColor: context.theme.resources.cardBackgroundFillColorSecondary,
-        child: Padding(
-          padding: const EdgeInsets.only(left: padding, right: padding),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    if (leading != null) ...[
-                      leading!,
-                      NcSpacing.medium(),
-                    ],
-                    title,
-                  ],
+    return HoverButton(
+      onPressed: onPressed,
+      builder: (context, states) {
+        if (onPressed == null) states.remove(ButtonStates.hovering);
+
+        var color = ButtonThemeData.uncheckedInputColor(context.theme, states);
+
+        if (backgroundColor != null) color = backgroundColor!.resolve(states);
+
+        if (states.isNone || states.isDisabled) color = context.theme.resources.cardBackgroundFillColorSecondary;
+
+        return SizedBox(
+          child: Card(
+            backgroundColor: color,
+            child: Padding(
+              padding: contentPadding,
+              child: IgnorePointer(
+                child: ListTile(
+                  leading: leading,
+                  title: title,
+                  trailing: trailing,
+                  subtitle: subtitle,
                 ),
               ),
-              if (trailing != null) trailing!,
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

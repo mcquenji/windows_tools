@@ -12,6 +12,15 @@
             }
         }
     },
+    "@settings_general_update_installing": {
+        "description": "The display text of installation progress",
+        "placeholders": {
+            "progress": {
+                "example": ".89",
+                "type": "String"
+            }
+        }
+    },
     "environmentVariables_refresh_tooltip": "Refresh",
     "environmentVariables_new_tooltip": "Create new",
     "environmentVariables_delete_tooltip": "Delete",
@@ -23,5 +32,14 @@
     "global_seearch_label": "Search",
     "global_search_placeholder": "Search...",
     "global_404": "404 Not Found",
-    "settings_title": "Settings"
+    "settings_title": "Settings",
+    "settings_general_language": "Language",
+    "settings_general": "General",
+    "settings_general_update_autCheck": "Check for updates automatically",
+    "settings_general_update_checkNow": "Check now",
+    "settings_general_update_error": "An unexpected error occurred. Please try again later.",
+    "settings_general_update_newVersion": "New version available",
+    "settings_general_update_upToDate": "You are using the latest version!",
+    "settings_general_update_install": "Install update",
+    "settings_general_update_installing": "Installing update ({progress}%)..."
 }

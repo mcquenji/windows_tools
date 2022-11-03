@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(name, amount) => "${name} (${amount})";
 
+  static String m1(progress) => "Installing update (${progress}%)...";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "environmentVariables_delete_tooltip":
@@ -43,6 +45,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "global_search_placeholder":
             MessageLookupByLibrary.simpleMessage("Search..."),
         "global_seearch_label": MessageLookupByLibrary.simpleMessage("Search"),
+        "settings_general": MessageLookupByLibrary.simpleMessage("General"),
+        "settings_general_language":
+            MessageLookupByLibrary.simpleMessage("Language"),
+        "settings_general_update_autCheck":
+            MessageLookupByLibrary.simpleMessage(
+                "Check for updates automatically"),
+        "settings_general_update_checkNow":
+            MessageLookupByLibrary.simpleMessage("Check now"),
+        "settings_general_update_error": MessageLookupByLibrary.simpleMessage(
+            "An unexpected error occurred. Please try again later."),
+        "settings_general_update_install":
+            MessageLookupByLibrary.simpleMessage("Install update"),
+        "settings_general_update_installing": m1,
+        "settings_general_update_newVersion":
+            MessageLookupByLibrary.simpleMessage("New version available"),
+        "settings_general_update_upToDate":
+            MessageLookupByLibrary.simpleMessage(
+                "You are using the latest version!"),
         "settings_title": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }
