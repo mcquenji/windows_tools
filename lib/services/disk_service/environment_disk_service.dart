@@ -2,13 +2,14 @@ part of windows_tools_engine;
 
 /// Stores environment variables on disk.
 class EnvironmentDiskService extends IDiskService<List<EnvironmentVariable>> {
-  static const String _envFile = 'environment_variables.json';
+  /// Creates a new instance of [EnvironmentDiskService].
+  const EnvironmentDiskService() : super('environment_variables');
 
   @override
   load() async {
-    if (!await _exists(_envFile)) return null;
+    if (!await _exists(fileName)) return null;
 
-    final data = await _load(_envFile);
+    final data = await _load(fileName);
 
     final json = jsonDecode(data);
 
@@ -19,6 +20,6 @@ class EnvironmentDiskService extends IDiskService<List<EnvironmentVariable>> {
   save(data) async {
     final json = jsonEncode(data);
 
-    return _save(_envFile, json);
+    return _save(fileName, json);
   }
 }

@@ -24,6 +24,9 @@ class EnvironmentEntry with _$EnvironmentEntry {
   /// Whether the entry is disabled.
   bool get disabled => !enabled;
 
+  /// Unique identifier of the entry.
+  String get identfier => '$parent#$value';
+
   /// Creates an [EnvironmentEntry] from a JSON object.
   factory EnvironmentEntry.fromJson(Map<String, dynamic> json) => _$EnvironmentEntryFromJson(json);
 }

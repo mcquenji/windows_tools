@@ -8,6 +8,16 @@ abstract class IDiskService<T> {
   /// The default file extension.
   static const defaultExtension = '.json';
 
+  final String _fileName;
+
+  /// The name of the file to store the data in.
+  ///
+  /// If no extension is provided, [defaultExtension] will be used.
+  String get fileName => _fileName.contains('.') ? _fileName : '$_fileName$defaultExtension';
+
+  /// Creates a new instance of [IDiskService].
+  const IDiskService(this._fileName);
+
   /// The directory where the data is stored.
   Future<Directory> get dataDir async {
     final dir = await getApplicationDocumentsDirectory();
