@@ -259,6 +259,36 @@ class S {
       args: [progress],
     );
   }
+
+  /// `Test`
+  String get test_title {
+    return Intl.message(
+      'Test',
+      name: 'test_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get global_dialog_confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'global_dialog_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get global_dialog_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'global_dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

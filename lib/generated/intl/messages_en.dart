@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "environmentVariables_toggle_tooltip":
             MessageLookupByLibrary.simpleMessage("Toggle"),
         "global_404": MessageLookupByLibrary.simpleMessage("404 Not Found"),
+        "global_dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "global_dialog_confirm":
+            MessageLookupByLibrary.simpleMessage("Confirm"),
         "global_search_placeholder":
             MessageLookupByLibrary.simpleMessage("Search..."),
         "global_seearch_label": MessageLookupByLibrary.simpleMessage("Search"),
@@ -63,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_general_update_upToDate":
             MessageLookupByLibrary.simpleMessage(
                 "You are using the latest version!"),
-        "settings_title": MessageLookupByLibrary.simpleMessage("Settings")
+        "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
+        "test_title": MessageLookupByLibrary.simpleMessage("Test")
       };
 }

@@ -46,7 +46,7 @@ class ExpanderCard extends StatelessWidget {
 
         if (backgroundColor != null) color = backgroundColor!.resolve(states);
 
-        if (states.isNone || states.isDisabled) color = context.theme.resources.cardBackgroundFillColorSecondary;
+        if ((states.isDisabled || states.isNone) && backgroundColor == null) color = context.theme.resources.cardBackgroundFillColorSecondary;
 
         return SizedBox(
           child: Card(

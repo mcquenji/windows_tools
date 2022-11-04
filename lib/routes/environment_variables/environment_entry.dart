@@ -1,4 +1,4 @@
-part of windows_tools_widgets;
+part of windows_tools_routes;
 
 /// Displays a single environment variable entry.
 class EnvironmentEntryWidget extends ConsumerStatefulWidget {
@@ -23,7 +23,6 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
 
     return ExpanderCard(
       onPressed: () => controller.enableEntry(entry, !entry.enabled),
-      key: ValueKey(entry.identfier),
       title: Text(entry.value),
       trailing: Tooltip(
         message: t.environmentVariables_toggle_tooltip,

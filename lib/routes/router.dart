@@ -6,7 +6,7 @@ class NavRouter extends StatefulWidget {
   const NavRouter({Key? key}) : super(key: key);
 
   /// Icn size for pane items.
-  static const iconSize = 20.0;
+  static const iconSize = 17.0;
 
   @override
   State<NavRouter> createState() => _NavRouterState();
@@ -30,56 +30,63 @@ class _NavRouterState extends State<NavRouter> {
         body: body,
       );
 
-  List<PaneItem> get items => [
-        item(
-          icon: FluentIcons.globe_person_24_filled,
-          title: t.environmentVariables_title,
-          body: const EnvironmentVariablesRoute(),
-        ),
-      ];
-
-  List<PaneItem> get footerItems => [
-        item(
-          icon: FluentIcons.settings_24_filled,
-          title: t.settings_title,
-          body: const SettingsRoute(),
-        ),
-      ];
-
-  List<PaneItem> get allItems => items + footerItems;
-
-  String get title => (allItems[selected].title as Text).data ?? t.global_404;
-
   @override
   Widget build(BuildContext context) {
+    var items = [
+      item(
+        icon: FluentIcons.globe_person_24_filled,
+        title: t.environmentVariables_title,
+        body: const EnvironmentVariablesRoute(),
+      ),
+    ];
+
+    var footerItems = [
+      if (kDebugMode)
+        item(
+          title: t.test_title,
+          icon: FluentIcons.pill_24_filled,
+          body: const TestRoute(),
+        ),
+      item(
+        icon: FluentIcons.settings_24_filled,
+        title: t.settings_title,
+        body: const SettingsRoute(),
+      ),
+    ];
+
+    var allItems = items + footerItems;
+
+    var title = (allItems[selected].title as Text).data ?? t.global_404; // dirty hack to get the title, i know...
+
     return NavigationView(
       appBar: const NavigationAppBar(
         automaticallyImplyLeading: false,
         height: NcSpacing.largeSpacing * 1.5,
       ),
       paneBodyBuilder: (selectedPaneItemBody) => Padding(
-          padding: const EdgeInsets.only(
-            left: NcSpacing.mediumSpacing,
-            right: NcSpacing.mediumSpacing,
-          ),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  title, // dirty hack to get the title, i know...
-                  style: theme.typography.title,
-                ),
+        padding: const EdgeInsets.only(
+          left: NcSpacing.mediumSpacing,
+          right: NcSpacing.mediumSpacing,
+        ),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                title,
+                style: theme.typography.title,
               ),
-              NcSpacing.large(),
-              Expanded(
-                child: selectedPaneItemBody ??
-                    Center(
-                      child: Text(t.global_404),
-                    ),
-              ),
-            ],
-          )),
+            ),
+            NcSpacing.large(),
+            Expanded(
+              child: selectedPaneItemBody ??
+                  Center(
+                    child: Text(t.global_404),
+                  ),
+            ),
+          ],
+        ),
+      ),
       contentShape: const RoundedRectangleBorder(side: BorderSide.none),
       pane: NavigationPane(
         selected: selected,

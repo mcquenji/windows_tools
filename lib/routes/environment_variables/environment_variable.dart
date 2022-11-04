@@ -1,4 +1,4 @@
-part of windows_tools_widgets;
+part of windows_tools_routes;
 
 /// Displays a single environment variable.
 class EnvironmentVariableWidget extends ConsumerStatefulWidget {
@@ -15,11 +15,11 @@ class EnvironmentVariableWidget extends ConsumerStatefulWidget {
 }
 
 class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableWidget> {
-  final _searchController = TextEditingController();
+  final searchController = TextEditingController();
 
   @override
   void initState() {
-    _searchController.addListener(() {
+    searchController.addListener(() {
       setState(() {});
     });
 
@@ -28,15 +28,25 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
 
   @override
   void dispose() {
-    _searchController.dispose();
+    searchController.dispose();
     super.dispose();
+  }
+
+  void addEntry() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog.ok(
+        content: Text('Not implemented yet.'),
+        title: 'Add entry',
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     var index = ref.watch(environmentVariablesProvider).indexOf(widget.variable);
 
-    var entries = widget.variable.entries.where((element) => element.value.containsCaseInsensitive(_searchController.text)).toList();
+    var entries = widget.variable.entries.where((element) => element.value.containsCaseInsensitive(searchController.text)).toList();
 
     return Expander(
       headerHeight: kExpanderHeaderHeight,
@@ -53,8 +63,8 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
         size: kExpanderIconSize,
       ),
       trailing: Button(
+        onPressed: addEntry,
         child: Text(t.environmentVariables_newEntry),
-        onPressed: () {},
       ),
       content: Column(
         children: [
@@ -63,7 +73,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
             trailing: SizedBox(
               width: kExpanderTrailingWidth,
               child: TextBox(
-                controller: _searchController,
+                controller: searchController,
                 placeholder: t.global_search_placeholder,
               ),
             ),

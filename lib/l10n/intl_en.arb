@@ -41,5 +41,8 @@
     "settings_general_update_newVersion": "New version available",
     "settings_general_update_upToDate": "You are using the latest version!",
     "settings_general_update_install": "Install update",
-    "settings_general_update_installing": "Installing update ({progress}%)..."
+    "settings_general_update_installing": "Installing update ({progress}%)...",
+    "test_title": "Test",
+    "global_dialog_confirm": "Confirm",
+    "global_dialog_cancel": "Cancel"
 }

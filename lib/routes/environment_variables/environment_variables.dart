@@ -92,8 +92,11 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
           child: ListView(
             children: [
               for (var variable in variables) ...[
-                EnvironmentVariableWidget(
-                  variable: variable,
+                GestureDetector(
+                  child: EnvironmentVariableWidget(
+                    key: ValueKey(variable.identifier),
+                    variable: variable,
+                  ),
                 ),
                 NcSpacing.small(),
               ],

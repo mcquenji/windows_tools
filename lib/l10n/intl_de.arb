@@ -25,5 +25,13 @@
     "global_404": "404 Nicht gefunden",
     "settings_title": "Einstellungen",
     "settings_general_language": "Sprache",
-    "settings_general": "Allgemein"
+    "settings_general": "Allgemein",
+    "settings_general_update_autCheck": "Automatisch nach updates suchen",
+    "settings_general_update_checkNow": "Nach Updates suchen",
+    "settings_general_update_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+    "settings_general_update_newVersion": "Eine neue Version ist verfügbar!",
+    "settings_general_update_upToDate": "Sie sind auf dem neuesten Stand!",
+    "settings_general_update_install": "Update installieren",
+    "settings_general_update_installing": "Update wird installiert ({progress}%)...",
+    "test_title": "Test"
 }
