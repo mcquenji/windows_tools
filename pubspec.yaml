@@ -67,8 +67,8 @@ dev_dependencies:
 
 dependency_overrides:
   # For development only
-  windows_tools_engine:
-    path: ../windows-tools-engine
+  # windows_tools_engine:
+  #   path: ../windows-tools-engine
   fluent_ui:
     path: ../fluent_ui
   # Because of missing customizations in fluent_ui upstream

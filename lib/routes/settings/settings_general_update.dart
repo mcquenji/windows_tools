@@ -85,13 +85,14 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
                 leading: Icon(
                   FluentIcons.notepad_24_filled,
                   color: theme.accentColor.defaultBrushFor(theme.brightness),
+                  size: kExpanderIconSize,
                 ),
                 title: Text(
                   t.settings_general_update_patchNotes_title(
                     info.latestVersion!,
                     kDateFormatter.format(info.releaseDate!),
                   ),
-                  style: theme.typography.bodyStrong,
+                  style: theme.typography.subtitle,
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: NcSpacing.smallSpacing),
@@ -100,10 +101,13 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
                     extensionSet: md.ExtensionSet.gitHubFlavored,
                     styleSheet: MarkdownStyleSheet(
                       p: theme.typography.body,
-                      a: theme.typography.bodyStrong!.copyWith(
+                      a: theme.typography.body!.copyWith(
                         color: theme.accentColor.defaultBrushFor(theme.brightness),
                       ),
-                      h1: theme.typography.subtitle,
+                      h1: theme.typography.bodyLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                      code: theme.typography.caption,
                       strong: theme.typography.bodyStrong,
                     ),
                     onTapLink: (text, href, title) => launchUrl(Uri.parse(href!)),
