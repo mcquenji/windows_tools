@@ -40,6 +40,7 @@ class MockUpdateService extends IUpdateService {
       updateAvailable: updateAvailable,
       patchNotes: error ? null : patchNotes,
       lastChecked: DateTime.now(),
+      releaseDate: error ? null : DateTime.now(),
     );
   }
 

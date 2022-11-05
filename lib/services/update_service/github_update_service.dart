@@ -24,12 +24,16 @@ class GithubUpdateService extends IUpdateService {
     // get patch notes
     var patchNotes = json['body'] as String;
 
+    // get release date
+    var releaseDate = DateTime.parse(json['published_at'] as String);
+
     return UpdateInfo(
       latestVersion: latestVersion,
       downloadUrl: downloadUrl,
       updateAvailable: updateAvailable,
       lastChecked: DateTime.now(),
       patchNotes: patchNotes,
+      releaseDate: releaseDate,
     );
   }
 

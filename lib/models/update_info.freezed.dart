@@ -48,6 +48,9 @@ mixin _$UpdateInfo {
   /// Patch notes for the new version.
   String? get patchNotes => throw _privateConstructorUsedError;
 
+  /// The release date of the new version.
+  DateTime? get releaseDate => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UpdateInfoCopyWith<UpdateInfo> get copyWith =>
@@ -68,7 +71,8 @@ abstract class $UpdateInfoCopyWith<$Res> {
       double? installProgress,
       DateTime? lastChecked,
       bool checking,
-      String? patchNotes});
+      String? patchNotes,
+      DateTime? releaseDate});
 }
 
 /// @nodoc
@@ -92,6 +96,7 @@ class _$UpdateInfoCopyWithImpl<$Res, $Val extends UpdateInfo>
     Object? lastChecked = freezed,
     Object? checking = null,
     Object? patchNotes = freezed,
+    Object? releaseDate = freezed,
   }) {
     return _then(_value.copyWith(
       updateAvailable: null == updateAvailable
@@ -126,6 +131,10 @@ class _$UpdateInfoCopyWithImpl<$Res, $Val extends UpdateInfo>
           ? _value.patchNotes
           : patchNotes // ignore: cast_nullable_to_non_nullable
               as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -146,7 +155,8 @@ abstract class _$$_UpdateInfoCopyWith<$Res>
       double? installProgress,
       DateTime? lastChecked,
       bool checking,
-      String? patchNotes});
+      String? patchNotes,
+      DateTime? releaseDate});
 }
 
 /// @nodoc
@@ -168,6 +178,7 @@ class __$$_UpdateInfoCopyWithImpl<$Res>
     Object? lastChecked = freezed,
     Object? checking = null,
     Object? patchNotes = freezed,
+    Object? releaseDate = freezed,
   }) {
     return _then(_$_UpdateInfo(
       updateAvailable: null == updateAvailable
@@ -202,6 +213,10 @@ class __$$_UpdateInfoCopyWithImpl<$Res>
           ? _value.patchNotes
           : patchNotes // ignore: cast_nullable_to_non_nullable
               as String?,
+      releaseDate: freezed == releaseDate
+          ? _value.releaseDate
+          : releaseDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -217,7 +232,8 @@ class _$_UpdateInfo extends _UpdateInfo {
       this.installProgress = null,
       this.lastChecked = null,
       this.checking = false,
-      this.patchNotes = null})
+      this.patchNotes = null,
+      this.releaseDate = null})
       : super._();
 
   factory _$_UpdateInfo.fromJson(Map<String, dynamic> json) =>
@@ -267,9 +283,14 @@ class _$_UpdateInfo extends _UpdateInfo {
   @JsonKey()
   final String? patchNotes;
 
+  /// The release date of the new version.
+  @override
+  @JsonKey()
+  final DateTime? releaseDate;
+
   @override
   String toString() {
-    return 'UpdateInfo(updateAvailable: $updateAvailable, latestVersion: $latestVersion, errorMessage: $errorMessage, downloadUrl: $downloadUrl, installProgress: $installProgress, lastChecked: $lastChecked, checking: $checking, patchNotes: $patchNotes)';
+    return 'UpdateInfo(updateAvailable: $updateAvailable, latestVersion: $latestVersion, errorMessage: $errorMessage, downloadUrl: $downloadUrl, installProgress: $installProgress, lastChecked: $lastChecked, checking: $checking, patchNotes: $patchNotes, releaseDate: $releaseDate)';
   }
 
   @override
@@ -292,7 +313,9 @@ class _$_UpdateInfo extends _UpdateInfo {
             (identical(other.checking, checking) ||
                 other.checking == checking) &&
             (identical(other.patchNotes, patchNotes) ||
-                other.patchNotes == patchNotes));
+                other.patchNotes == patchNotes) &&
+            (identical(other.releaseDate, releaseDate) ||
+                other.releaseDate == releaseDate));
   }
 
   @JsonKey(ignore: true)
@@ -306,7 +329,8 @@ class _$_UpdateInfo extends _UpdateInfo {
       installProgress,
       lastChecked,
       checking,
-      patchNotes);
+      patchNotes,
+      releaseDate);
 
   @JsonKey(ignore: true)
   @override
@@ -331,7 +355,8 @@ abstract class _UpdateInfo extends UpdateInfo {
       final double? installProgress,
       final DateTime? lastChecked,
       final bool checking,
-      final String? patchNotes}) = _$_UpdateInfo;
+      final String? patchNotes,
+      final DateTime? releaseDate}) = _$_UpdateInfo;
   _UpdateInfo._() : super._();
 
   factory _UpdateInfo.fromJson(Map<String, dynamic> json) =
@@ -373,6 +398,10 @@ abstract class _UpdateInfo extends UpdateInfo {
 
   /// Patch notes for the new version.
   String? get patchNotes;
+  @override
+
+  /// The release date of the new version.
+  DateTime? get releaseDate;
   @override
   @JsonKey(ignore: true)
   _$$_UpdateInfoCopyWith<_$_UpdateInfo> get copyWith =>
