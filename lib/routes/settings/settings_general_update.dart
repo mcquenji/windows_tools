@@ -89,7 +89,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
                 ),
                 title: Text(
                   t.settings_general_update_patchNotes_title(
-                    info.latestVersion!,
+                    info.releaseName!,
                     kDateFormatter.format(info.releaseDate!),
                   ),
                   style: theme.typography.subtitle,
