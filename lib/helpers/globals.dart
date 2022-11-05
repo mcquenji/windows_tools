@@ -3,6 +3,9 @@ part of windows_tools_helpers;
 /// The current version of the app.
 const kVersion = '0.0.1';
 
+/// Current version name.
+const kVersionName = 'Alpha $kVersion';
+
 /// Identifier for [PageStorage]. Used to track if updates where already checked.
 const kCheckedUpdatesIdentifier = 'checked_updates';
 

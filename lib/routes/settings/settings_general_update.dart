@@ -44,7 +44,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
           FluentIcons.arrow_sync_24_filled,
           size: kExpanderIconSize,
         ),
-        header: Text(info.updateAvailable ? t.settings_general_update_newVersion : kVersion),
+        header: Text(info.updateAvailable ? t.settings_general_update_newVersion : kVersionName),
         trailing: ConditionalWidget(
           condition: info.checking,
           trueWidget: (context) => const SizedBox.square(
