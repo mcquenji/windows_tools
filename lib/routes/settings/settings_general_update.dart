@@ -43,7 +43,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
           FluentIcons.arrow_sync_24_filled,
           size: kExpanderIconSize,
         ),
-        header: Text(info.updateAvailable ? t.settings_general_update_newVersion : packageInfo.version),
+        header: Text(info.updateAvailable ? t.settings_general_update_newVersion : kVersion),
         trailing: ConditionalWidget(
           condition: info.checking,
           trueWidget: (context) => const SizedBox.square(
@@ -56,7 +56,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
             child: Text(
               info.updateAvailable ? t.settings_general_update_install : t.settings_general_update_checkNow,
             ),
-            onPressed: () => info.updateAvailable ? updater.installUpdate() : updater.checkForUpdates(packageInfo.version),
+            onPressed: () => info.updateAvailable ? updater.installUpdate() : updater.checkForUpdates(kVersion),
           ),
         ),
         content: Column(

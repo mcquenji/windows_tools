@@ -42,6 +42,19 @@ class App extends ConsumerWidget {
   Widget build(context, ref) {
     var settings = ref.watch(settingsProvider);
 
+    bool checkedUpdates = PageStorage.of(context)?.readState(context, identifier: kCheckedUpdatesIdentifier) as bool? ?? false;
+
+    // check for updates if auto check is enabled
+    if (settings.autoCheckUpdates && !checkedUpdates) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        var updater = ref.read(updateController);
+
+        updater.checkForUpdates(kVersion);
+
+        PageStorage.of(context)?.writeState(context, true, identifier: kCheckedUpdatesIdentifier);
+      });
+    }
+
     return FluentApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,

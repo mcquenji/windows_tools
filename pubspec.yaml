@@ -36,6 +36,7 @@ dependencies:
     sdk: flutter
   flutter_localized_locales: ^2.0.3
   flutter_riverpod: ^2.1.1
+  http: ^0.13.5
   nekolib_ui:
     git:
       url: https://github.com/necodeIT/nekolib.git
@@ -54,12 +55,12 @@ dependencies:
     git:
       url: https://github.com/necodeIT/windows-tools.git
       ref: engine
+  flutter_markdown: ^0.6.13
 
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  msix: ^3.7.0
 
 dependency_overrides:
   # For development only

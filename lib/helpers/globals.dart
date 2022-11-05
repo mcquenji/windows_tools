@@ -1,9 +1,10 @@
 part of windows_tools_helpers;
 
-/// The current package info.
-///
-/// Initialized in [initGlobals]. Has to be called before using this. Best practice is to call this in [main].
-late final PackageInfo packageInfo;
+/// The current version of the app.
+const kVersion = '0.0.1';
+
+/// Identifier for [PageStorage]. Used to track if updates where already checked.
+const kCheckedUpdatesIdentifier = 'checked_updates';
 
 /// The default height of the expander header.
 const double kExpanderHeaderHeight = 70;
@@ -21,6 +22,4 @@ const double kExpanderTrailingHeight = 20;
 const double kExpanderProgressRingWidth = 3.5;
 
 /// Initializes the globals.
-Future<void> initGlobals() async {
-  packageInfo = await PackageInfo.fromPlatform();
-}
+Future<void> initGlobals() async {}
