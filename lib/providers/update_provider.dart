@@ -3,7 +3,7 @@ part of windows_tools_engine;
 /// Provides the current update info.
 final updateProvider = StateNotifierProvider<UpdateProvider, UpdateInfo>(
   (ref) => UpdateProvider(
-    MockUpdateService(),
+    kDebugMode ? MockUpdateService() : GithubUpdateService(),
     UpdateDiskService(),
   ),
 );
