@@ -75,7 +75,7 @@
     "settings_general_update_install": "Install update",
     "settings_general_update_upToDate_lastChecked": "Last checked: {date}",
     "settings_general_update_installing": "Installing update ({progress}%)...",
-    "settings_general_update_patchNotes_title": "{version} Patch Notes ({date})",
+    "settings_general_update_patchNotes_title": "{version} Patch notes - {date}",
     "test_title": "Test",
     "global_dialog_confirm": "Confirm",
     "global_dialog_cancel": "Cancel"

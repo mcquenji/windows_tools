@@ -370,10 +370,10 @@ class S {
     );
   }
 
-  /// `{version} Patch Notes ({date})`
+  /// `{version} Patch notes - {date}`
   String settings_general_update_patchNotes_title(String version, String date) {
     return Intl.message(
-      '$version Patch Notes ($date)',
+      '$version Patch notes - $date',
       name: 'settings_general_update_patchNotes_title',
       desc: 'Title of patch notes section',
       args: [version, date],

@@ -193,9 +193,11 @@ packages:
   fluent_ui:
     dependency: "direct main"
     description:
-      path: "../fluent_ui"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: c7a3b9af914a32365051714cd70a261393afd2e2
+      url: "https://github.com/bmceachnie/fluent_ui.git"
+    source: git
     version: "4.0.3"
   fluentui_system_icons:
     dependency: "direct main"

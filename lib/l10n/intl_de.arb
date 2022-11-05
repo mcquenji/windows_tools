@@ -47,5 +47,7 @@
     "environmentVariables_edit_save": "Speichern",
     "environmentVariables_edit_cancel": "Abbrechen",
     "environmentVariables_title_user": "Benutzer Umgebungsvariablen",
-    "environmentVariables_title_system": "System Umgebungsvariablen"
+    "environmentVariables_title_system": "System Umgebungsvariablen",
+    "settings_general_update_upToDate_lastChecked": "Zuletzt überprüft: {date}",
+    "settings_general_update_patchNotes_title": "{version} Update - {date} (Englisch)"
 }

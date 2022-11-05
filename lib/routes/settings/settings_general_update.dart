@@ -62,7 +62,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
         ),
         content: Column(
           children: [
-            if (!info.updateAvailable && info.errorMessage == null)
+            if (!info.updateAvailable && info.errorMessage == null && info.lastChecked != null)
               ExpanderCard(
                 backgroundColor: ButtonState.all(theme.resources.systemFillColorSuccessBackground),
                 leading: Icon(FluentIcons.checkmark_circle_24_filled, color: theme.resources.systemFillColorSuccess, size: kExpanderIconSize),

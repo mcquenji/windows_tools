@@ -22,7 +22,7 @@ const double kExpanderTrailingHeight = 20;
 const double kExpanderProgressRingWidth = 3.5;
 
 /// Default formatter for [DateTime] objects.
-final kDateFormatter = DateFormat('dd.MM.yyyy – kk:mm');
+final kDateFormatter = DateFormat('dd.MM.yyyy kk:mm');
 
 /// Initializes the globals.
 Future<void> initGlobals() async {}

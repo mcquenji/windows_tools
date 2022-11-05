@@ -39,17 +39,23 @@ class _AppState extends ConsumerState<App> {
         'lightest': SystemTheme.accentColor.lightest,
       });
 
-  bool checkedUpdates = false;
+  bool get checkedUpdates => rebuilds != 2;
+
+  /// tracked to only check for updates once after the settings have been loaded.
+  int rebuilds = 0;
 
   @override
   Widget build(context) {
     var settings = ref.watch(settingsProvider);
 
+    // Count rebuilds to check if the app has been rebuilt after the settings have been loaded.
+    // First rebuild is the initial build.
+    // Second rebuild is the build after the settings have been loaded.
+    if (rebuilds < 2) rebuilds++;
+
     // check for updates if auto check is enabled
     if (settings.autoCheckUpdates && !checkedUpdates) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        checkedUpdates = true;
-
         var updater = ref.read(updateController);
 
         updater.checkForUpdates(kVersion);
@@ -82,7 +88,6 @@ class _AppState extends ConsumerState<App> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: settings.language,
-      title: 'Windows Tools',
       home: const NavRouter(),
     );
   }

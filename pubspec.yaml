@@ -69,12 +69,12 @@ dependency_overrides:
   # For development only
   # windows_tools_engine:
   #   path: ../windows-tools-engine
-  fluent_ui:
-    path: ../fluent_ui
-  # Because of missing customizations in fluent_ui upstream
   # fluent_ui:
-  #   git:
-  #     url: https://github.com/bmceachnie/fluent_ui.git
+  #   path: ../fluent_ui
+  # Because of missing customizations in fluent_ui upstream
+  fluent_ui:
+    git:
+      url: https://github.com/bmceachnie/fluent_ui.git
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

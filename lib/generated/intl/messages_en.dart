@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(progress) => "Installing update (${progress}%)...";
 
-  static String m2(version, date) => "${version} Patch Notes (${date})";
+  static String m2(version, date) => "${version} Patch notes - ${date}";
 
   static String m3(date) => "Last checked: ${date}";
 
