@@ -34,6 +34,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Eintrag löschen?"),
         "environmentVariables_edit":
             MessageLookupByLibrary.simpleMessage("Bearbeiten"),
+        "environmentVariables_edit_cancel":
+            MessageLookupByLibrary.simpleMessage("Abbrechen"),
+        "environmentVariables_edit_save":
+            MessageLookupByLibrary.simpleMessage("Speichern"),
         "environmentVariables_name": m0,
         "environmentVariables_newEntry":
             MessageLookupByLibrary.simpleMessage("Neuer Eintrag"),
@@ -53,6 +57,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Neue Umgebungsvariable hinzufügen"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Aktualisieren"),
+        "environmentVariables_title_system":
+            MessageLookupByLibrary.simpleMessage("System Umgebungsvariablen"),
+        "environmentVariables_title_user":
+            MessageLookupByLibrary.simpleMessage("Benutzer Umgebungsvariablen"),
         "environmentVariables_toggle_tooltip":
             MessageLookupByLibrary.simpleMessage("Deaktivieren / Aktivieren"),
         "global_404":

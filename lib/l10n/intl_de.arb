@@ -19,7 +19,6 @@
     "environmentVariables_edit_tooltip": "Bearbeiten",
     "environmentVariables_name": "{name} ({amount})",
     "environmentVariables_newEntry": "Neuer Eintrag",
-    "environmentVariables_title": "Umgebungsvariablen",
     "global_seearch_label": "Suchen",
     "global_search_placeholder": "Suchen...",
     "global_404": "404 Nicht gefunden",
@@ -44,5 +43,9 @@
     "global_dialog_confirm": "Bestätigen",
     "global_dialog_cancel": "Abbrechen",
     "environmentVariables_delete": "Löschen",
-    "environmentVariables_edit": "Bearbeiten"
+    "environmentVariables_edit": "Bearbeiten",
+    "environmentVariables_edit_save": "Speichern",
+    "environmentVariables_edit_cancel": "Abbrechen",
+    "environmentVariables_title_user": "Benutzer Umgebungsvariablen",
+    "environmentVariables_title_system": "System Umgebungsvariablen"
 }
