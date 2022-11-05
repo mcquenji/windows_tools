@@ -350,6 +350,16 @@ class S {
     );
   }
 
+  /// `Last checked: {date}`
+  String settings_general_update_upToDate_lastChecked(String date) {
+    return Intl.message(
+      'Last checked: $date',
+      name: 'settings_general_update_upToDate_lastChecked',
+      desc: 'Last checked subtitle of update section',
+      args: [date],
+    );
+  }
+
   /// `Installing update ({progress}%)...`
   String settings_general_update_installing(String progress) {
     return Intl.message(
@@ -357,6 +367,16 @@ class S {
       name: 'settings_general_update_installing',
       desc: 'The display text of installation progress',
       args: [progress],
+    );
+  }
+
+  /// `{version} Patch Notes ({date})`
+  String settings_general_update_patchNotes_title(String version, String date) {
+    return Intl.message(
+      '$version Patch Notes ($date)',
+      name: 'settings_general_update_patchNotes_title',
+      desc: 'Title of patch notes section',
+      args: [version, date],
     );
   }
 

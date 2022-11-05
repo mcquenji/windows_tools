@@ -56,6 +56,9 @@ dependencies:
       url: https://github.com/necodeIT/windows-tools.git
       ref: engine
   flutter_markdown: ^0.6.13
+  url_launcher: ^6.1.6
+  intl: ^0.17.0
+  markdown: ^6.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

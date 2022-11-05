@@ -35,6 +35,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
         ),
       ),
       falseWidget: (context) => Expander(
+        initiallyExpanded: info.updateAvailable,
         headerHeight: kExpanderHeaderHeight,
         contentBackgroundColor: theme.cardColor,
         headerBackgroundColor: info.updateAvailable ? ButtonState.all(theme.resources.systemFillColorSuccessBackground) : null,
@@ -66,12 +67,48 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
                 backgroundColor: ButtonState.all(theme.resources.systemFillColorSuccessBackground),
                 leading: Icon(FluentIcons.checkmark_circle_24_filled, color: theme.resources.systemFillColorSuccess, size: kExpanderIconSize),
                 title: Text(t.settings_general_update_upToDate, style: theme.typography.bodyStrong),
+                subtitle: Text(
+                  t.settings_general_update_upToDate_lastChecked(
+                    kDateFormatter.format(info.lastChecked!),
+                  ),
+                ),
               ),
             if (info.errorMessage != null)
               ExpanderCard(
                 backgroundColor: ButtonState.all(theme.resources.systemFillColorCriticalBackground),
                 leading: Icon(FluentIcons.error_circle_24_filled, color: theme.resources.systemFillColorCritical),
                 title: Text(t.settings_general_update_error, style: theme.typography.bodyStrong),
+              ),
+            if (info.updateAvailable)
+              ExpanderCard(
+                backgroundColor: ButtonState.all(theme.resources.systemFillColorAttentionBackground),
+                leading: Icon(
+                  FluentIcons.notepad_24_filled,
+                  color: theme.accentColor.defaultBrushFor(theme.brightness),
+                ),
+                title: Text(
+                  t.settings_general_update_patchNotes_title(
+                    info.latestVersion!,
+                    kDateFormatter.format(info.releaseDate!),
+                  ),
+                  style: theme.typography.bodyStrong,
+                ),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: NcSpacing.smallSpacing),
+                  child: MarkdownBody(
+                    data: info.patchNotes!,
+                    extensionSet: md.ExtensionSet.gitHubFlavored,
+                    styleSheet: MarkdownStyleSheet(
+                      p: theme.typography.body,
+                      a: theme.typography.bodyStrong!.copyWith(
+                        color: theme.accentColor.defaultBrushFor(theme.brightness),
+                      ),
+                      h1: theme.typography.subtitle,
+                      strong: theme.typography.bodyStrong,
+                    ),
+                    onTapLink: (text, href, title) => launchUrl(Uri.parse(href!)),
+                  ),
+                ),
               ),
             ExpanderCard(
               title: Text(t.settings_general_update_autCheck),

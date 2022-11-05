@@ -20,14 +20,15 @@ void main() async {
 }
 
 /// Root app widget.
-class App extends ConsumerWidget {
+class App extends ConsumerStatefulWidget {
   /// Root app widget.
   const App({super.key});
 
-  /// Builder for convinience.
-  // ignore: prefer_const_constructors
-  // static App builder(context) => App();
+  @override
+  ConsumerState<App> createState() => _AppState();
+}
 
+class _AppState extends ConsumerState<App> {
   AccentColor get accentColor => AccentColor.swatch({
         'darkest': SystemTheme.accentColor.darkest,
         'darker': SystemTheme.accentColor.darker,
@@ -38,20 +39,20 @@ class App extends ConsumerWidget {
         'lightest': SystemTheme.accentColor.lightest,
       });
 
-  @override
-  Widget build(context, ref) {
-    var settings = ref.watch(settingsProvider);
+  bool checkedUpdates = false;
 
-    bool checkedUpdates = PageStorage.of(context)?.readState(context, identifier: kCheckedUpdatesIdentifier) as bool? ?? false;
+  @override
+  Widget build(context) {
+    var settings = ref.watch(settingsProvider);
 
     // check for updates if auto check is enabled
     if (settings.autoCheckUpdates && !checkedUpdates) {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        checkedUpdates = true;
+
         var updater = ref.read(updateController);
 
         updater.checkForUpdates(kVersion);
-
-        PageStorage.of(context)?.writeState(context, true, identifier: kCheckedUpdatesIdentifier);
       });
     }
 

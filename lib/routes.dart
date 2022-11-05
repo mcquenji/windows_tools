@@ -6,12 +6,15 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nekolib_ui/core.dart';
 import 'package:nekolib_utils/extensions.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:windows_tools/widgets.dart';
 import 'package:windows_tools_engine/windows_tools_engine.dart';
 import 'helpers.dart';
+import 'package:markdown/markdown.dart' as md;
 
 part 'routes/environment_variables/environment_variables.dart';
 part 'routes/router.dart';

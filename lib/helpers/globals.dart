@@ -21,5 +21,8 @@ const double kExpanderTrailingHeight = 20;
 /// Default stroke width for progress ring inside expander header or content.
 const double kExpanderProgressRingWidth = 3.5;
 
+/// Default formatter for [DateTime] objects.
+final kDateFormatter = DateFormat('dd.MM.yyyy – kk:mm');
+
 /// Initializes the globals.
 Future<void> initGlobals() async {}

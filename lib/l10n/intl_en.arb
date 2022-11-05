@@ -21,6 +21,28 @@
             }
         }
     },
+    "@settings_general_update_patchNotes_title": {
+        "description": "Title of patch notes section",
+        "placeholders": {
+            "version": {
+                "example": "Beta v0.1.0",
+                "type": "String"
+            },
+            "date": {
+                "example": "5.11.2019",
+                "type": "String"
+            }
+        }
+    },
+    "@settings_general_update_upToDate_lastChecked": {
+        "description": "Last checked subtitle of update section",
+        "placeholders": {
+            "date": {
+                "example": "5.11.2019",
+                "type": "String"
+            }
+        }
+    },
     "environmentVariables_refresh_tooltip": "Refresh",
     "environmentVariables_new_tooltip": "Create new",
     "environmentVariables_delete": "Delete",
@@ -51,7 +73,9 @@
     "settings_general_update_newVersion": "A new version is available!",
     "settings_general_update_upToDate": "You are using the latest version!",
     "settings_general_update_install": "Install update",
+    "settings_general_update_upToDate_lastChecked": "Last checked: {date}",
     "settings_general_update_installing": "Installing update ({progress}%)...",
+    "settings_general_update_patchNotes_title": "{version} Patch Notes ({date})",
     "test_title": "Test",
     "global_dialog_confirm": "Confirm",
     "global_dialog_cancel": "Cancel"

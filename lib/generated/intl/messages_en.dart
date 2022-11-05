@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(progress) => "Installing update (${progress}%)...";
 
+  static String m2(version, date) => "${version} Patch Notes (${date})";
+
+  static String m3(date) => "Last checked: ${date}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "environmentVariables_delete":
@@ -84,9 +88,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_general_update_installing": m1,
         "settings_general_update_newVersion":
             MessageLookupByLibrary.simpleMessage("A new version is available!"),
+        "settings_general_update_patchNotes_title": m2,
         "settings_general_update_upToDate":
             MessageLookupByLibrary.simpleMessage(
                 "You are using the latest version!"),
+        "settings_general_update_upToDate_lastChecked": m3,
         "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
         "test_title": MessageLookupByLibrary.simpleMessage("Test")
       };
