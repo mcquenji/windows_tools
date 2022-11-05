@@ -27,7 +27,7 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
           size: kExpanderIconSize,
         ),
         title: Text(
-          t.settings_general_update_installing((info.installProgress ?? 0).toString()),
+          t.settings_general_update_installing((info.installProgress ?? 0).toStringAsFixed(2)),
         ),
         trailing: SizedBox(
           width: kExpanderTrailingWidth,
