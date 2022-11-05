@@ -2,7 +2,7 @@
     "engineVersion": "0.0.0",
     "projectType": "_$_FlutterProject",
     "projectData": {
-        "name": "windows_tools",
+        "name": "Windows Tools",
         "sdkVersion": "3.3.3",
         "path": ".",
         "soundNullSafety": true
@@ -11,7 +11,7 @@
         "appName": "Windows Tools",
         "version": "0.0.1",
         "publisher": "necodeIT",
-        "outputFileName": "WindowsToolsSetup",
+        "outputFileName": "Setup",
         "outputDir": ".dpls",
         "executeableBinaryFile": "windows_tools",
         "uuid": "6cf57c66-1b81-4eab-af3e-226074e2ee3b",
