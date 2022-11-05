@@ -91,8 +91,10 @@ class EnvironmentService extends IEnvironmentService {
 
       // set all entries that are not in b to disabled
       for (final entry in localEntries) {
-        if (!variable.entries.any((e) => e.value == entry.value)) {
+        if (!variable.entries.any((e) => e.identfier == entry.identfier)) {
           var index = localEntries.indexOf(entry);
+
+          if (entry.disabled) continue;
 
           localEntries[index] = entry.copyWith(enabled: false);
 
