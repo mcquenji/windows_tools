@@ -26,24 +26,41 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "environmentVariables_delete_tooltip":
+        "environmentVariables_delete":
             MessageLookupByLibrary.simpleMessage("Löschen"),
-        "environmentVariables_edit_tooltip":
+        "environmentVariables_delete_message": MessageLookupByLibrary.simpleMessage(
+            "Sind Sie sicher, dass Sie diesen Eintrag löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden."),
+        "environmentVariables_delete_title":
+            MessageLookupByLibrary.simpleMessage("Eintrag löschen?"),
+        "environmentVariables_edit":
             MessageLookupByLibrary.simpleMessage("Bearbeiten"),
         "environmentVariables_name": m0,
         "environmentVariables_newEntry":
             MessageLookupByLibrary.simpleMessage("Neuer Eintrag"),
+        "environmentVariables_newEntry_custom":
+            MessageLookupByLibrary.simpleMessage("Benutzerdefiniert"),
+        "environmentVariables_newEntry_custom_placeholder":
+            MessageLookupByLibrary.simpleMessage("Wert eingeben"),
+        "environmentVariables_newEntry_custom_title":
+            MessageLookupByLibrary.simpleMessage(
+                "Benutzerdefinierten Wert hinzufügen"),
+        "environmentVariables_newEntry_directory":
+            MessageLookupByLibrary.simpleMessage("Ordner"),
+        "environmentVariables_newEntry_file":
+            MessageLookupByLibrary.simpleMessage("Datei"),
         "environmentVariables_new_tooltip":
             MessageLookupByLibrary.simpleMessage(
                 "Neue Umgebungsvariable hinzufügen"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Aktualisieren"),
-        "environmentVariables_title":
-            MessageLookupByLibrary.simpleMessage("Umgebungsvariablen"),
         "environmentVariables_toggle_tooltip":
             MessageLookupByLibrary.simpleMessage("Deaktivieren / Aktivieren"),
         "global_404":
             MessageLookupByLibrary.simpleMessage("404 Nicht gefunden"),
+        "global_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Abbrechen"),
+        "global_dialog_confirm":
+            MessageLookupByLibrary.simpleMessage("Bestätigen"),
         "global_search_placeholder":
             MessageLookupByLibrary.simpleMessage("Suchen..."),
         "global_seearch_label": MessageLookupByLibrary.simpleMessage("Suchen"),

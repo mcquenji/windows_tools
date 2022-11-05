@@ -26,19 +26,40 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "environmentVariables_delete_tooltip":
+        "environmentVariables_delete":
             MessageLookupByLibrary.simpleMessage("Delete"),
-        "environmentVariables_edit_tooltip":
+        "environmentVariables_delete_message": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this entry? This action cannot be undone."),
+        "environmentVariables_delete_title":
+            MessageLookupByLibrary.simpleMessage("Delete entry?"),
+        "environmentVariables_edit":
             MessageLookupByLibrary.simpleMessage("Edit"),
+        "environmentVariables_edit_cancel":
+            MessageLookupByLibrary.simpleMessage("Cancel"),
+        "environmentVariables_edit_save":
+            MessageLookupByLibrary.simpleMessage("Save changes"),
         "environmentVariables_name": m0,
         "environmentVariables_newEntry":
-            MessageLookupByLibrary.simpleMessage("Add new entry"),
+            MessageLookupByLibrary.simpleMessage("New entry"),
+        "environmentVariables_newEntry_custom":
+            MessageLookupByLibrary.simpleMessage("Custom"),
+        "environmentVariables_newEntry_custom_placeholder":
+            MessageLookupByLibrary.simpleMessage("Enter value"),
+        "environmentVariables_newEntry_custom_title":
+            MessageLookupByLibrary.simpleMessage("Add custom value"),
+        "environmentVariables_newEntry_directory":
+            MessageLookupByLibrary.simpleMessage("Directory"),
+        "environmentVariables_newEntry_file":
+            MessageLookupByLibrary.simpleMessage("File"),
         "environmentVariables_new_tooltip":
             MessageLookupByLibrary.simpleMessage("Create new"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Refresh"),
-        "environmentVariables_title":
-            MessageLookupByLibrary.simpleMessage("Environment Variables"),
+        "environmentVariables_title_system":
+            MessageLookupByLibrary.simpleMessage(
+                "System Environment Variables"),
+        "environmentVariables_title_user":
+            MessageLookupByLibrary.simpleMessage("User Environment Variables"),
         "environmentVariables_toggle_tooltip":
             MessageLookupByLibrary.simpleMessage("Toggle"),
         "global_404": MessageLookupByLibrary.simpleMessage("404 Not Found"),
@@ -62,7 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Install update"),
         "settings_general_update_installing": m1,
         "settings_general_update_newVersion":
-            MessageLookupByLibrary.simpleMessage("New version available"),
+            MessageLookupByLibrary.simpleMessage("A new version is available!"),
         "settings_general_update_upToDate":
             MessageLookupByLibrary.simpleMessage(
                 "You are using the latest version!"),

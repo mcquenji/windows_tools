@@ -71,10 +71,10 @@ class S {
   }
 
   /// `Delete`
-  String get environmentVariables_delete_tooltip {
+  String get environmentVariables_delete {
     return Intl.message(
       'Delete',
-      name: 'environmentVariables_delete_tooltip',
+      name: 'environmentVariables_delete',
       desc: '',
       args: [],
     );
@@ -91,10 +91,30 @@ class S {
   }
 
   /// `Edit`
-  String get environmentVariables_edit_tooltip {
+  String get environmentVariables_edit {
     return Intl.message(
       'Edit',
-      name: 'environmentVariables_edit_tooltip',
+      name: 'environmentVariables_edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save changes`
+  String get environmentVariables_edit_save {
+    return Intl.message(
+      'Save changes',
+      name: 'environmentVariables_edit_save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get environmentVariables_edit_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'environmentVariables_edit_cancel',
       desc: '',
       args: [],
     );
@@ -110,21 +130,101 @@ class S {
     );
   }
 
-  /// `Add new entry`
+  /// `New entry`
   String get environmentVariables_newEntry {
     return Intl.message(
-      'Add new entry',
+      'New entry',
       name: 'environmentVariables_newEntry',
       desc: '',
       args: [],
     );
   }
 
-  /// `Environment Variables`
-  String get environmentVariables_title {
+  /// `File`
+  String get environmentVariables_newEntry_file {
     return Intl.message(
-      'Environment Variables',
-      name: 'environmentVariables_title',
+      'File',
+      name: 'environmentVariables_newEntry_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Directory`
+  String get environmentVariables_newEntry_directory {
+    return Intl.message(
+      'Directory',
+      name: 'environmentVariables_newEntry_directory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom`
+  String get environmentVariables_newEntry_custom {
+    return Intl.message(
+      'Custom',
+      name: 'environmentVariables_newEntry_custom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add custom value`
+  String get environmentVariables_newEntry_custom_title {
+    return Intl.message(
+      'Add custom value',
+      name: 'environmentVariables_newEntry_custom_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter value`
+  String get environmentVariables_newEntry_custom_placeholder {
+    return Intl.message(
+      'Enter value',
+      name: 'environmentVariables_newEntry_custom_placeholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete entry?`
+  String get environmentVariables_delete_title {
+    return Intl.message(
+      'Delete entry?',
+      name: 'environmentVariables_delete_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this entry? This action cannot be undone.`
+  String get environmentVariables_delete_message {
+    return Intl.message(
+      'Are you sure you want to delete this entry? This action cannot be undone.',
+      name: 'environmentVariables_delete_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Environment Variables`
+  String get environmentVariables_title_user {
+    return Intl.message(
+      'User Environment Variables',
+      name: 'environmentVariables_title_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System Environment Variables`
+  String get environmentVariables_title_system {
+    return Intl.message(
+      'System Environment Variables',
+      name: 'environmentVariables_title_system',
       desc: '',
       args: [],
     );
@@ -220,10 +320,10 @@ class S {
     );
   }
 
-  /// `New version available`
+  /// `A new version is available!`
   String get settings_general_update_newVersion {
     return Intl.message(
-      'New version available',
+      'A new version is available!',
       name: 'settings_general_update_newVersion',
       desc: '',
       args: [],

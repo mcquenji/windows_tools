@@ -12,13 +12,18 @@ class Dialog extends StatelessWidget {
   final String title;
 
   /// Dialog content.
-  final Widget content;
+  final Widget? content;
 
   /// Called when the cancel button is pressed.
   final VoidCallback? onCancel;
 
   /// Called when the confirm button is pressed.
   final VoidCallback? onConfirm;
+
+  /// Builds the content with confirm and cancel callbacks.
+  ///
+  /// Optional. If not provided, [content] will be used.
+  final Widget Function(BuildContext context, VoidCallback confirm, VoidCallback cancel)? contentBuilder;
 
   final bool _hasCancel;
 
@@ -27,23 +32,27 @@ class Dialog extends StatelessWidget {
     Key? key,
     this.cancelText,
     this.confirmText,
-    required this.content,
+    this.content,
     this.onCancel,
     this.onConfirm,
+    this.contentBuilder,
     required this.title,
   })  : _hasCancel = true,
+        assert(content != null || contentBuilder != null, 'Either content or contentBuilder must be provided.'),
         super(key: key);
 
   /// [ContentDialog] with less boilerplate.
   const Dialog.ok({
     Key? key,
     this.confirmText,
-    required this.content,
+    this.content,
     this.onConfirm,
+    this.contentBuilder,
     required this.title,
   })  : _hasCancel = false,
         cancelText = null,
         onCancel = null,
+        assert(content != null || contentBuilder != null, 'Either content or contentBuilder must be provided.'),
         super(key: key);
 
   @override
@@ -60,31 +69,32 @@ class Dialog extends StatelessWidget {
 
     return ContentDialog(
       constraints: BoxConstraints(
-        minWidth: MediaQuery.of(context).size.width * 0.3,
-        maxWidth: MediaQuery.of(context).size.width * 0.5,
+        maxWidth: MediaQuery.of(context).size.width * 0.4,
         maxHeight: MediaQuery.of(context).size.height * 0.8,
       ),
-      title: Text(title, style: context.theme.typography.body),
-      content: content,
+      title: Text(
+        title,
+        style: context.theme.typography.title,
+      ),
+      content: contentBuilder?.call(context, onConfirm, onCancel) ?? content!,
       actions: [
         if (_hasCancel) ...[
-          FilledButton(
-            onPressed: onCancel,
-            child: Text(
-              cancelText ?? context.t.global_dialog_cancel,
-            ),
-          ),
           Button(
             onPressed: onConfirm,
             child: Text(
               confirmText ?? context.t.global_dialog_confirm,
             ),
           ),
+          FilledButton(
+            onPressed: onCancel,
+            child: Text(
+              cancelText ?? context.t.global_dialog_cancel,
+            ),
+          ),
         ],
         if (!_hasCancel)
           FilledButton(
             onPressed: onConfirm,
-            // style: context.theme.buttonTheme.filledButtonStyle,
             child: Text(
               confirmText ?? context.t.global_dialog_confirm,
             ),

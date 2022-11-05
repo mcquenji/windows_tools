@@ -2,8 +2,11 @@ part of windows_tools_routes;
 
 /// Route for the Environment Variables page.
 class EnvironmentVariablesRoute extends ConsumerStatefulWidget {
+  /// The context of variables to display.
+  final EnvironmentVariableContext context;
+
   /// Route for the Environment Variables page.
-  const EnvironmentVariablesRoute({Key? key}) : super(key: key);
+  const EnvironmentVariablesRoute({Key? key, required this.context}) : super(key: key);
 
   @override
   ConsumerState<EnvironmentVariablesRoute> createState() => _EnvironmentVariablesRouteState();
@@ -50,7 +53,9 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
 
   @override
   Widget build(context) {
-    var variables = ref.watch(environmentVariablesProvider).where((element) => element.name.containsCaseInsensitive(_searchController.text)).toList();
+    var variables = ref.watch(environmentVariablesProvider).where((element) {
+      return element.name.containsCaseInsensitive(_searchController.text) && element.context == widget.context;
+    }).toList();
 
     return Column(
       children: [

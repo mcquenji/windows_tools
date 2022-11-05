@@ -33,5 +33,16 @@
     "settings_general_update_upToDate": "Sie sind auf dem neuesten Stand!",
     "settings_general_update_install": "Update installieren",
     "settings_general_update_installing": "Update wird installiert ({progress}%)...",
-    "test_title": "Test"
+    "test_title": "Test",
+    "environmentVariables_newEntry_file": "Datei",
+    "environmentVariables_newEntry_directory": "Ordner",
+    "environmentVariables_newEntry_custom": "Benutzerdefiniert",
+    "environmentVariables_newEntry_custom_title": "Benutzerdefinierten Wert hinzufügen",
+    "environmentVariables_newEntry_custom_placeholder": "Wert eingeben",
+    "environmentVariables_delete_title": "Eintrag löschen?",
+    "environmentVariables_delete_message": "Sind Sie sicher, dass Sie diesen Eintrag löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden.",
+    "global_dialog_confirm": "Bestätigen",
+    "global_dialog_cancel": "Abbrechen",
+    "environmentVariables_delete": "Löschen",
+    "environmentVariables_edit": "Bearbeiten"
 }

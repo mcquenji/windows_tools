@@ -32,14 +32,43 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
     super.dispose();
   }
 
-  void addEntry() {
+  void addCustom() async {
+    final input = TextEditingController();
+    var controller = ref.read(environmentVariablesController);
+
     showDialog(
       context: context,
-      builder: (context) => Dialog.ok(
-        content: Text('Not implemented yet.'),
-        title: 'Add entry',
+      builder: (context) => Dialog(
+        contentBuilder: (context, confirm, cancel) => TextBox(
+          placeholder: t.environmentVariables_newEntry_custom_placeholder,
+          controller: input,
+          onSubmitted: (_) => confirm(),
+          autofocus: true,
+        ),
+        title: t.environmentVariables_newEntry_custom_title,
+        onConfirm: () => controller.addEntry(widget.variable.identifier, input.text),
       ),
     );
+  }
+
+  void addDirectory() async {
+    final result = await FilePicker.platform.getDirectoryPath();
+
+    if (result == null || !mounted) return;
+
+    var controller = ref.read(environmentVariablesController);
+
+    controller.addEntry(widget.variable.identifier, result);
+  }
+
+  void addFile() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null || !mounted) return;
+
+    var controller = ref.read(environmentVariablesController);
+
+    controller.addEntry(widget.variable.identifier, result.files.first.path!);
   }
 
   @override
@@ -61,10 +90,27 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
       leading: Icon(
         widget.variable.context.isUser ? FluentIcons.person_24_filled : FluentIcons.globe_24_filled,
         size: kExpanderIconSize,
+        color: theme.accentColor,
       ),
-      trailing: Button(
-        onPressed: addEntry,
-        child: Text(t.environmentVariables_newEntry),
+      trailing: DropDownButton(
+        title: Text(t.environmentVariables_newEntry),
+        items: [
+          MenuFlyoutItem(
+            leading: const Icon(FluentIcons.folder_24_filled),
+            text: Text(t.environmentVariables_newEntry_directory),
+            onPressed: addDirectory,
+          ),
+          MenuFlyoutItem(
+            leading: const Icon(FluentIcons.document_24_filled),
+            text: Text(t.environmentVariables_newEntry_file),
+            onPressed: addFile,
+          ),
+          MenuFlyoutItem(
+            leading: const Icon(FluentIcons.collections_24_filled),
+            text: Text(t.environmentVariables_newEntry_custom),
+            onPressed: addCustom,
+          ),
+        ],
       ),
       content: Column(
         children: [

@@ -34,9 +34,18 @@ class _NavRouterState extends State<NavRouter> {
   Widget build(BuildContext context) {
     var items = [
       item(
-        icon: FluentIcons.globe_person_24_filled,
-        title: t.environmentVariables_title,
-        body: const EnvironmentVariablesRoute(),
+        icon: FluentIcons.person_24_filled,
+        title: t.environmentVariables_title_user,
+        body: const EnvironmentVariablesRoute(
+          context: EnvironmentVariableContext.user,
+        ),
+      ),
+      item(
+        icon: FluentIcons.globe_24_filled,
+        title: t.environmentVariables_title_system,
+        body: const EnvironmentVariablesRoute(
+          context: EnvironmentVariableContext.machine,
+        ),
       ),
     ];
 
