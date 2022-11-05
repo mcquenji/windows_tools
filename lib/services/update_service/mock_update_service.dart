@@ -19,8 +19,9 @@ class MockUpdateService extends IUpdateService {
 
     var updateAvailable = rand.nextBool();
 
-    var version = updateAvailable ? 'Beta v$major.$minor.$patch' : '';
-    var url = updateAvailable ? 'https://example.com/$version' : '';
+    var version = updateAvailable ? '$major.$minor.$patch' : null;
+    var url = updateAvailable ? 'https://example.com/$version' : null;
+    var releaseName = updateAvailable ? 'Beta v$version' : null;
 
     var error = rand.nextBool() && !updateAvailable;
 
@@ -48,6 +49,7 @@ Fixed the following bugs:
     return UpdateInfo(
       latestVersion: version,
       downloadUrl: url,
+      releaseName: releaseName,
       errorMessage: errorMessage,
       updateAvailable: updateAvailable,
       patchNotes: error ? null : patchNotes,

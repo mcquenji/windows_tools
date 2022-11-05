@@ -17,6 +17,7 @@ class GithubUpdateService extends IUpdateService {
     var json = jsonDecode(response.body);
 
     var latestVersion = json['tag_name'] as String;
+    var releaseName = json['name'] as String;
     var downloadUrl = json['assets'][0]['browser_download_url'] as String;
 
     var updateAvailable = latestVersion != currentVersion;
@@ -29,6 +30,7 @@ class GithubUpdateService extends IUpdateService {
 
     return UpdateInfo(
       latestVersion: latestVersion,
+      releaseName: releaseName,
       downloadUrl: downloadUrl,
       updateAvailable: updateAvailable,
       lastChecked: DateTime.now(),

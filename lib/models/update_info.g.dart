@@ -21,6 +21,7 @@ _$_UpdateInfo _$$_UpdateInfoFromJson(Map<String, dynamic> json) =>
       releaseDate: json['releaseDate'] == null
           ? null
           : DateTime.parse(json['releaseDate'] as String),
+      releaseName: json['releaseName'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$_UpdateInfoToJson(_$_UpdateInfo instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_UpdateInfoToJson(_$_UpdateInfo instance) =>
       'checking': instance.checking,
       'patchNotes': instance.patchNotes,
       'releaseDate': instance.releaseDate?.toIso8601String(),
+      'releaseName': instance.releaseName,
     };

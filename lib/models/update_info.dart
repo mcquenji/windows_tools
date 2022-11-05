@@ -41,6 +41,9 @@ class UpdateInfo with _$UpdateInfo {
 
     /// The release date of the new version.
     @Default(null) DateTime? releaseDate,
+
+    /// The name of the release.
+    @Default(null) String? releaseName,
   }) = _UpdateInfo;
 
   /// Whether the update is currently being installed.
