@@ -19,7 +19,7 @@ class MockUpdateService extends IUpdateService {
 
     var updateAvailable = rand.nextBool();
 
-    var version = updateAvailable ? '$major.$minor.$patch' : '';
+    var version = updateAvailable ? 'Beta v$major.$minor.$patch' : '';
     var url = updateAvailable ? 'https://example.com/$version' : '';
 
     var error = rand.nextBool() && !updateAvailable;
@@ -27,11 +27,23 @@ class MockUpdateService extends IUpdateService {
     var errorMessage = error ? 'Random error lol' : null;
 
     var patchNotes = '''
-    # Patch notes
-    - Random patch notes
-    - More random patch notes
-    - Even more random patch notes
-    ''';
+# Features
+
+Added:
+  - Random feature
+  - Another random feature
+  - Yet another random feature
+
+# Bug fixes
+
+Fixed the following bugs:
+
+  - Random bug
+  - Another random bug
+  - Yet another random bug
+
+[Full changelog](https://example.com/changelog)
+''';
 
     return UpdateInfo(
       latestVersion: version,
