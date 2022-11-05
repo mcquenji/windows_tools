@@ -26,16 +26,25 @@ class MockUpdateService extends IUpdateService {
 
     var errorMessage = error ? 'Random error lol' : null;
 
+    var patchNotes = '''
+    # Patch notes
+    - Random patch notes
+    - More random patch notes
+    - Even more random patch notes
+    ''';
+
     return UpdateInfo(
       latestVersion: version,
       downloadUrl: url,
       errorMessage: errorMessage,
       updateAvailable: updateAvailable,
+      patchNotes: error ? null : patchNotes,
+      lastChecked: DateTime.now(),
     );
   }
 
   @override
-  installUpdate(info, update) async {
+  installUpdate(info, update, done) async {
     if (!info.updateAvailable || info.installing) return;
 
     update(info.copyWith(installProgress: 0.0));
@@ -52,6 +61,6 @@ class MockUpdateService extends IUpdateService {
 
     await Future.delayed(Duration(milliseconds: rand.nextInt(500)));
 
-    update(info.copyWith(installProgress: null, updateAvailable: false, errorMessage: null));
+    done(info.copyWith(installProgress: null, updateAvailable: false, errorMessage: null));
   }
 }

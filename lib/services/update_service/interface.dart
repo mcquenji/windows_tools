@@ -6,5 +6,9 @@ abstract class IUpdateService {
   Future<UpdateInfo> checkForUpdates(String currentVersion);
 
   /// Downloads and installs the update.
-  Future<void> installUpdate(UpdateInfo info, void Function(UpdateInfo) update);
+  ///
+  /// [update] is called during installation progress.
+  ///
+  /// [done] is called when the installation is done.
+  Future<void> installUpdate(UpdateInfo info, void Function(UpdateInfo) update, void Function(UpdateInfo) done);
 }

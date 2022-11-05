@@ -39,8 +39,14 @@ mixin _$UpdateInfo {
   /// If no installation is in progress, this is null.
   double? get installProgress => throw _privateConstructorUsedError;
 
+  /// When the last check for updates was performed.
+  DateTime? get lastChecked => throw _privateConstructorUsedError;
+
   /// Wether the app is currently checking for updates.
   bool get checking => throw _privateConstructorUsedError;
+
+  /// Patch notes for the new version.
+  String? get patchNotes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +66,9 @@ abstract class $UpdateInfoCopyWith<$Res> {
       String? errorMessage,
       String? downloadUrl,
       double? installProgress,
-      bool checking});
+      DateTime? lastChecked,
+      bool checking,
+      String? patchNotes});
 }
 
 /// @nodoc
@@ -81,7 +89,9 @@ class _$UpdateInfoCopyWithImpl<$Res, $Val extends UpdateInfo>
     Object? errorMessage = freezed,
     Object? downloadUrl = freezed,
     Object? installProgress = freezed,
+    Object? lastChecked = freezed,
     Object? checking = null,
+    Object? patchNotes = freezed,
   }) {
     return _then(_value.copyWith(
       updateAvailable: null == updateAvailable
@@ -104,10 +114,18 @@ class _$UpdateInfoCopyWithImpl<$Res, $Val extends UpdateInfo>
           ? _value.installProgress
           : installProgress // ignore: cast_nullable_to_non_nullable
               as double?,
+      lastChecked: freezed == lastChecked
+          ? _value.lastChecked
+          : lastChecked // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       checking: null == checking
           ? _value.checking
           : checking // ignore: cast_nullable_to_non_nullable
               as bool,
+      patchNotes: freezed == patchNotes
+          ? _value.patchNotes
+          : patchNotes // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -126,7 +144,9 @@ abstract class _$$_UpdateInfoCopyWith<$Res>
       String? errorMessage,
       String? downloadUrl,
       double? installProgress,
-      bool checking});
+      DateTime? lastChecked,
+      bool checking,
+      String? patchNotes});
 }
 
 /// @nodoc
@@ -145,7 +165,9 @@ class __$$_UpdateInfoCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? downloadUrl = freezed,
     Object? installProgress = freezed,
+    Object? lastChecked = freezed,
     Object? checking = null,
+    Object? patchNotes = freezed,
   }) {
     return _then(_$_UpdateInfo(
       updateAvailable: null == updateAvailable
@@ -168,10 +190,18 @@ class __$$_UpdateInfoCopyWithImpl<$Res>
           ? _value.installProgress
           : installProgress // ignore: cast_nullable_to_non_nullable
               as double?,
+      lastChecked: freezed == lastChecked
+          ? _value.lastChecked
+          : lastChecked // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       checking: null == checking
           ? _value.checking
           : checking // ignore: cast_nullable_to_non_nullable
               as bool,
+      patchNotes: freezed == patchNotes
+          ? _value.patchNotes
+          : patchNotes // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -181,11 +211,13 @@ class __$$_UpdateInfoCopyWithImpl<$Res>
 class _$_UpdateInfo extends _UpdateInfo {
   _$_UpdateInfo(
       {this.updateAvailable = false,
-      this.latestVersion = "",
+      this.latestVersion = null,
       this.errorMessage = null,
-      this.downloadUrl = "",
+      this.downloadUrl = null,
       this.installProgress = null,
-      this.checking = false})
+      this.lastChecked = null,
+      this.checking = false,
+      this.patchNotes = null})
       : super._();
 
   factory _$_UpdateInfo.fromJson(Map<String, dynamic> json) =>
@@ -220,14 +252,24 @@ class _$_UpdateInfo extends _UpdateInfo {
   @JsonKey()
   final double? installProgress;
 
+  /// When the last check for updates was performed.
+  @override
+  @JsonKey()
+  final DateTime? lastChecked;
+
   /// Wether the app is currently checking for updates.
   @override
   @JsonKey()
   final bool checking;
 
+  /// Patch notes for the new version.
+  @override
+  @JsonKey()
+  final String? patchNotes;
+
   @override
   String toString() {
-    return 'UpdateInfo(updateAvailable: $updateAvailable, latestVersion: $latestVersion, errorMessage: $errorMessage, downloadUrl: $downloadUrl, installProgress: $installProgress, checking: $checking)';
+    return 'UpdateInfo(updateAvailable: $updateAvailable, latestVersion: $latestVersion, errorMessage: $errorMessage, downloadUrl: $downloadUrl, installProgress: $installProgress, lastChecked: $lastChecked, checking: $checking, patchNotes: $patchNotes)';
   }
 
   @override
@@ -245,14 +287,26 @@ class _$_UpdateInfo extends _UpdateInfo {
                 other.downloadUrl == downloadUrl) &&
             (identical(other.installProgress, installProgress) ||
                 other.installProgress == installProgress) &&
+            (identical(other.lastChecked, lastChecked) ||
+                other.lastChecked == lastChecked) &&
             (identical(other.checking, checking) ||
-                other.checking == checking));
+                other.checking == checking) &&
+            (identical(other.patchNotes, patchNotes) ||
+                other.patchNotes == patchNotes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, updateAvailable, latestVersion,
-      errorMessage, downloadUrl, installProgress, checking);
+  int get hashCode => Object.hash(
+      runtimeType,
+      updateAvailable,
+      latestVersion,
+      errorMessage,
+      downloadUrl,
+      installProgress,
+      lastChecked,
+      checking,
+      patchNotes);
 
   @JsonKey(ignore: true)
   @override
@@ -275,7 +329,9 @@ abstract class _UpdateInfo extends UpdateInfo {
       final String? errorMessage,
       final String? downloadUrl,
       final double? installProgress,
-      final bool checking}) = _$_UpdateInfo;
+      final DateTime? lastChecked,
+      final bool checking,
+      final String? patchNotes}) = _$_UpdateInfo;
   _UpdateInfo._() : super._();
 
   factory _UpdateInfo.fromJson(Map<String, dynamic> json) =
@@ -307,8 +363,16 @@ abstract class _UpdateInfo extends UpdateInfo {
   double? get installProgress;
   @override
 
+  /// When the last check for updates was performed.
+  DateTime? get lastChecked;
+  @override
+
   /// Wether the app is currently checking for updates.
   bool get checking;
+  @override
+
+  /// Patch notes for the new version.
+  String? get patchNotes;
   @override
   @JsonKey(ignore: true)
   _$$_UpdateInfoCopyWith<_$_UpdateInfo> get copyWith =>

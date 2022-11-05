@@ -13,6 +13,8 @@ import 'dart:ui';
 import 'package:riverpod/riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:win32_registry/win32_registry.dart';
+import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 // Models
 
@@ -37,3 +39,5 @@ part 'services/disk_service/environment_disk_service.dart';
 part 'services/disk_service/settings_disk_service.dart';
 part 'services/update_service/interface.dart';
 part 'services/update_service/mock_update_service.dart';
+part 'services/disk_service/update_disk_service.dart';
+part 'services/update_service/github_update_service.dart';

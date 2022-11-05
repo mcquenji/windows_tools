@@ -15,13 +15,13 @@ class UpdateInfo with _$UpdateInfo {
     @Default(false) bool updateAvailable,
 
     /// The new version.
-    @Default("") String? latestVersion,
+    @Default(null) String? latestVersion,
 
     /// The error that occurred. If no error occurred, this is null.
     @Default(null) String? errorMessage,
 
     /// The url to download the new version from.
-    @Default("") String? downloadUrl,
+    @Default(null) String? downloadUrl,
 
     /// The progress of the installation.
     ///
@@ -30,8 +30,14 @@ class UpdateInfo with _$UpdateInfo {
     /// If no installation is in progress, this is null.
     @Default(null) double? installProgress,
 
+    /// When the last check for updates was performed.
+    @Default(null) DateTime? lastChecked,
+
     /// Wether the app is currently checking for updates.
     @Default(false) bool checking,
+
+    /// Patch notes for the new version.
+    @Default(null) String? patchNotes,
   }) = _UpdateInfo;
 
   /// Whether the update is currently being installed.
