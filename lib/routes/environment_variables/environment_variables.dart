@@ -13,27 +13,27 @@ class EnvironmentVariablesRoute extends ConsumerStatefulWidget {
 }
 
 class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariablesRoute> {
-  final _searchController = TextEditingController();
+  final searchController = TextEditingController();
 
-  bool _refreshing = false;
+  bool refreshing = false;
 
   @override
   void initState() {
     super.initState();
 
     ref.read(environmentVariablesController).refresh();
-    _searchController.addListener(() {
+    searchController.addListener(() {
       setState(() {});
     });
   }
 
-  _refresh() async {
-    if (_refreshing) return;
+  refresh() async {
+    if (refreshing) return;
 
     var controller = ref.watch(environmentVariablesController);
 
     setState(() {
-      _refreshing = true;
+      refreshing = true;
     });
 
     await controller.refresh();
@@ -41,20 +41,53 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
     if (!mounted) return;
 
     setState(() {
-      _refreshing = false;
+      refreshing = false;
     });
   }
 
   @override
   void dispose() {
-    _searchController.dispose();
+    searchController.dispose();
     super.dispose();
+  }
+
+  void addVariable() {
+    final input = TextEditingController();
+    var controller = ref.read(environmentVariablesController);
+
+    add() {
+      var success = controller.addVariable(input.text, widget.context);
+
+      if (success) return;
+
+      showDialog(
+        context: context,
+        builder: (context) => Dialog.ok(
+          content: Text(t.environmentVariables_newVariable_alreadyExists_message(input.text)),
+          title: t.environmentVariables_newVariable_alreadyExists_title,
+        ),
+      );
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        contentBuilder: (context, confirm, cancel) => TextBox(
+          placeholder: t.environmentVariables_newVariable_placeholder,
+          controller: input,
+          onSubmitted: (_) => confirm(),
+          autofocus: true,
+        ),
+        title: t.environmentVariables_newVariable_title,
+        onConfirm: add,
+      ),
+    );
   }
 
   @override
   Widget build(context) {
     var variables = ref.watch(environmentVariablesProvider).where((element) {
-      return element.name.containsCaseInsensitive(_searchController.text) && element.context == widget.context;
+      return element.name.containsCaseInsensitive(searchController.text) && element.context == widget.context;
     }).toList();
 
     return Column(
@@ -63,8 +96,30 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
           children: [
             Expanded(
               child: TextBox(
-                controller: _searchController,
+                controller: searchController,
                 placeholder: t.global_search_placeholder,
+              ),
+            ),
+            NcSpacing.small(),
+            Tooltip(
+              message: t.environmentVariables_newVariable_tooltip,
+              child: SizedBox.square(
+                dimension: kPickerHeight,
+                child: Button(
+                  onPressed: addVariable,
+                  child: ConditionalWidget(
+                    condition: refreshing,
+                    trueWidget: (context) => const Center(
+                      child: SizedBox.square(
+                        dimension: 14,
+                        child: ProgressRing(
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    ),
+                    falseWidget: (context) => const Icon(FluentIcons.add_24_filled),
+                  ),
+                ),
               ),
             ),
             NcSpacing.small(),
@@ -73,10 +128,9 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
               child: SizedBox.square(
                 dimension: kPickerHeight,
                 child: Button(
-                  style: theme.buttonTheme.defaultButtonStyle,
-                  onPressed: _refresh,
+                  onPressed: refresh,
                   child: ConditionalWidget(
-                    condition: _refreshing,
+                    condition: refreshing,
                     trueWidget: (context) => const Center(
                       child: SizedBox.square(
                         dimension: 14,

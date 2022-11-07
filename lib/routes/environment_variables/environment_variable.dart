@@ -32,7 +32,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
     super.dispose();
   }
 
-  void addCustom() async {
+  void addCustom() {
     final input = TextEditingController();
     var controller = ref.read(environmentVariablesController);
 
@@ -106,7 +106,7 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
             onPressed: addFile,
           ),
           MenuFlyoutItem(
-            leading: const Icon(FluentIcons.collections_24_filled),
+            leading: const Icon(FluentIcons.text_field_24_filled),
             text: Text(t.environmentVariables_newEntry_custom),
             onPressed: addCustom,
           ),

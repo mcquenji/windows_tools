@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(name, amount) => "${name} (${amount})";
 
+  static String m4(name) =>
+      "A variable with the name \"${name}\" already exists.";
+
   static String m1(progress) => "Installing update (${progress}%)...";
 
   static String m2(version, date) => "${version} Patch notes - ${date}";
@@ -30,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "environmentVariables_copy":
+            MessageLookupByLibrary.simpleMessage("Copy"),
         "environmentVariables_delete":
             MessageLookupByLibrary.simpleMessage("Delete"),
         "environmentVariables_delete_message": MessageLookupByLibrary.simpleMessage(
@@ -55,8 +60,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Directory"),
         "environmentVariables_newEntry_file":
             MessageLookupByLibrary.simpleMessage("File"),
+        "environmentVariables_newVariable_alreadyExists_message": m4,
+        "environmentVariables_newVariable_alreadyExists_title":
+            MessageLookupByLibrary.simpleMessage("Variable already exists"),
+        "environmentVariables_newVariable_placeholder":
+            MessageLookupByLibrary.simpleMessage("Variable name..."),
+        "environmentVariables_newVariable_title":
+            MessageLookupByLibrary.simpleMessage("Create new variable"),
+        "environmentVariables_newVariable_tooltip":
+            MessageLookupByLibrary.simpleMessage("Add new variable"),
         "environmentVariables_new_tooltip":
             MessageLookupByLibrary.simpleMessage("Create new"),
+        "environmentVariables_open":
+            MessageLookupByLibrary.simpleMessage("Open"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Refresh"),
         "environmentVariables_title_system":

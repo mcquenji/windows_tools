@@ -43,11 +43,22 @@
             }
         }
     },
+    "@environmentVariables_newVariable_alreadyExists_message": {
+        "description": "Message when trying to create a new environment variable with an already existing name",
+        "placeholders": {
+            "name": {
+                "example": "MyVariable",
+                "type": "String"
+            }
+        }
+    },
     "environmentVariables_refresh_tooltip": "Refresh",
     "environmentVariables_new_tooltip": "Create new",
     "environmentVariables_delete": "Delete",
     "environmentVariables_toggle_tooltip": "Toggle",
     "environmentVariables_edit": "Edit",
+    "environmentVariables_open": "Open",
+    "environmentVariables_copy": "Copy",
     "environmentVariables_edit_save": "Save changes",
     "environmentVariables_edit_cancel": "Cancel",
     "environmentVariables_name": "{name} ({amount})",
@@ -55,6 +66,11 @@
     "environmentVariables_newEntry_file": "File",
     "environmentVariables_newEntry_directory": "Directory",
     "environmentVariables_newEntry_custom": "Custom",
+    "environmentVariables_newVariable_title": "Create new variable",
+    "environmentVariables_newVariable_tooltip": "Add new variable",
+    "environmentVariables_newVariable_placeholder": "Variable name...",
+    "environmentVariables_newVariable_alreadyExists_title": "Variable already exists",
+    "environmentVariables_newVariable_alreadyExists_message": "A variable with the name \"{name}\" already exists.",
     "environmentVariables_newEntry_custom_title": "Add custom value",
     "environmentVariables_newEntry_custom_placeholder": "Enter value",
     "environmentVariables_delete_title": "Delete entry?",

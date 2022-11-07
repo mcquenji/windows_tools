@@ -100,6 +100,26 @@ class S {
     );
   }
 
+  /// `Open`
+  String get environmentVariables_open {
+    return Intl.message(
+      'Open',
+      name: 'environmentVariables_open',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get environmentVariables_copy {
+    return Intl.message(
+      'Copy',
+      name: 'environmentVariables_copy',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save changes`
   String get environmentVariables_edit_save {
     return Intl.message(
@@ -167,6 +187,57 @@ class S {
       name: 'environmentVariables_newEntry_custom',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Create new variable`
+  String get environmentVariables_newVariable_title {
+    return Intl.message(
+      'Create new variable',
+      name: 'environmentVariables_newVariable_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new variable`
+  String get environmentVariables_newVariable_tooltip {
+    return Intl.message(
+      'Add new variable',
+      name: 'environmentVariables_newVariable_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Variable name...`
+  String get environmentVariables_newVariable_placeholder {
+    return Intl.message(
+      'Variable name...',
+      name: 'environmentVariables_newVariable_placeholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Variable already exists`
+  String get environmentVariables_newVariable_alreadyExists_title {
+    return Intl.message(
+      'Variable already exists',
+      name: 'environmentVariables_newVariable_alreadyExists_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A variable with the name "{name}" already exists.`
+  String environmentVariables_newVariable_alreadyExists_message(String name) {
+    return Intl.message(
+      'A variable with the name "$name" already exists.',
+      name: 'environmentVariables_newVariable_alreadyExists_message',
+      desc:
+          'Message when trying to create a new environment variable with an already existing name',
+      args: [name],
     );
   }
 

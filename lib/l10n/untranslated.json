@@ -1,1 +1,11 @@
-{}
+{
+  "de": [
+    "environmentVariables_open",
+    "environmentVariables_copy",
+    "environmentVariables_newVariable_title",
+    "environmentVariables_newVariable_tooltip",
+    "environmentVariables_newVariable_placeholder",
+    "environmentVariables_newVariable_alreadyExists_title",
+    "environmentVariables_newVariable_alreadyExists_message"
+  ]
+}

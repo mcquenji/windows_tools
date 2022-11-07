@@ -71,6 +71,24 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
     );
   }
 
+  open() {
+    flyout.close();
+
+    var variables = ref.read(environmentVariablesProvider);
+    var entry = variables[widget.variableId].entries[widget.entryId];
+
+    entry.type.open(entry.value);
+  }
+
+  copy() {
+    flyout.close();
+
+    var variables = ref.read(environmentVariablesProvider);
+    var entry = variables[widget.variableId].entries[widget.entryId];
+
+    Clipboard.setData(ClipboardData(text: entry.value));
+  }
+
   @override
   Widget build(BuildContext context) {
     var entry = ref.watch(environmentVariablesProvider)[widget.variableId].entries[widget.entryId];
@@ -88,6 +106,23 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                if (entry.type.canOpen)
+                  FlyoutListTile(
+                    text: Text(t.environmentVariables_open),
+                    onPressed: open,
+                    icon: Icon(
+                      FluentIcons.open_24_regular,
+                      color: theme.accentColor,
+                    ),
+                  ),
+                FlyoutListTile(
+                  text: Text(t.environmentVariables_copy),
+                  onPressed: copy,
+                  icon: Icon(
+                    FluentIcons.copy_24_regular,
+                    color: theme.accentColor,
+                  ),
+                ),
                 FlyoutListTile(
                   text: Text(t.environmentVariables_edit),
                   onPressed: edit,

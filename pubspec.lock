@@ -700,11 +700,9 @@ packages:
   windows_tools_engine:
     dependency: "direct main"
     description:
-      path: "."
-      ref: engine
-      resolved-ref: "3dfc60a694f7073f729f5a5e64e0bbdff4d19142"
-      url: "https://github.com/necodeIT/windows-tools.git"
-    source: git
+      path: "../windows-tools-engine"
+      relative: true
+    source: path
     version: "0.0.1"
   xdg_directories:
     dependency: transitive
