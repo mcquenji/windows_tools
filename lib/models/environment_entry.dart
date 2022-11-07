@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:windows_tools_engine/windows_tools_engine.dart';
 
 part 'environment_entry.freezed.dart';
 part 'environment_entry.g.dart';
@@ -26,6 +27,9 @@ class EnvironmentEntry with _$EnvironmentEntry {
 
   /// Unique identifier of the entry.
   String get identfier => '$parent#$value';
+
+  /// The type of the entry.
+  EnvironmentEntryType get type => EnvironmentEntryType.fromValue(value);
 
   /// Creates an [EnvironmentEntry] from a JSON object.
   factory EnvironmentEntry.fromJson(Map<String, dynamic> json) => _$EnvironmentEntryFromJson(json);

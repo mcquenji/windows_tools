@@ -13,6 +13,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:win32_registry/win32_registry.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -24,6 +25,7 @@ import 'models/environment_entry.dart';
 import 'models/update_info.dart';
 import 'models/environment_variable.dart';
 part 'models/environment_variable_context.dart';
+part 'models/environment_entry_types.dart';
 
 // Providers
 

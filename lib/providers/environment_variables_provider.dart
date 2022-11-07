@@ -80,4 +80,22 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
 
     _disk.save(state);
   }
+
+  /// Creates a new variable with the given name [name] and [context].
+  ///
+  /// If the variable already exists, nothing happens and this function returns false.
+  /// Otherwise, it returns true.
+  bool addVariable(String name, EnvironmentVariableContext context) {
+    var variable = EnvironmentVariable(name: name, entries: [], context: context);
+
+    if (_env.getVariableIndex(state, variable.identifier) != -1) return false;
+
+    state = _env.addVariable(state, variable);
+
+    _env.setEnvironmentVariable(variable);
+
+    _disk.save(state);
+
+    return true;
+  }
 }

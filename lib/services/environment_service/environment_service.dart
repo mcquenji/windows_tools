@@ -166,4 +166,17 @@ class EnvironmentService extends IEnvironmentService {
 
     return newVariables;
   }
+
+  @override
+  addVariable(variables, variable) {
+    final index = getVariableIndex(variables, variable.identifier);
+
+    if (index != -1) return variables;
+
+    var newVariables = variables.toList();
+
+    newVariables.add(variable);
+
+    return newVariables;
+  }
 }

@@ -27,4 +27,9 @@ abstract class IEnvironmentService {
   ///
   /// Returns -1 if the variable is not found.
   int getVariableIndex(List<EnvironmentVariable> variables, String identifier) => variables.indexWhere((e) => e.identifier == identifier);
+
+  /// Adds the given [variable] to the [variables].
+  ///
+  /// If the variable already exists, nothing happens.
+  List<EnvironmentVariable> addVariable(List<EnvironmentVariable> variables, EnvironmentVariable variable);
 }
