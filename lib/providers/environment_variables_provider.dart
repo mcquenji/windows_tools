@@ -83,8 +83,7 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
 
   /// Creates a new variable with the given name [name] and [context].
   ///
-  /// If the variable already exists, nothing happens and this function returns false.
-  /// Otherwise, it returns true.
+  /// If the variable already exists, nothing happens and this function returns false. Returns true otherwise.
   bool addVariable(String name, EnvironmentVariableContext context) {
     var variable = EnvironmentVariable(name: name, entries: [], context: context);
 
@@ -97,5 +96,14 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
     _disk.save(state);
 
     return true;
+  }
+
+  /// Removes the variable with the given [identifier].
+  ///
+  /// If the variable does not exist, nothing happens.
+  void removeVariable(String identifier) {
+    state = _env.removeVariable(state, identifier);
+
+    _disk.save(state);
   }
 }

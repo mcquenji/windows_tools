@@ -179,4 +179,17 @@ class EnvironmentService extends IEnvironmentService {
 
     return newVariables;
   }
+
+  @override
+  removeVariable(variables, identifier) {
+    final index = getVariableIndex(variables, identifier);
+
+    if (index == -1) return variables;
+
+    var newVariables = variables.toList();
+
+    newVariables.removeAt(index);
+
+    return newVariables;
+  }
 }

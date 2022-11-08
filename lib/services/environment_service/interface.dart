@@ -32,4 +32,9 @@ abstract class IEnvironmentService {
   ///
   /// If the variable already exists, nothing happens.
   List<EnvironmentVariable> addVariable(List<EnvironmentVariable> variables, EnvironmentVariable variable);
+
+  /// Removes the variable with the given [identifier] from the [variables].
+  ///
+  /// If the variable does not exist, nothing happens.
+  List<EnvironmentVariable> removeVariable(List<EnvironmentVariable> variables, String identifier);
 }
