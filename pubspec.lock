@@ -16,7 +16,7 @@ packages:
     source: hosted
     version: "2.9.0"
   bitsdojo_window:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: bitsdojo_window
       url: "https://pub.dartlang.org"
@@ -127,6 +127,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.2"
+  context_menus:
+    dependency: "direct main"
+    description:
+      name: context_menus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   cross_connectivity:
     dependency: transitive
     description:
@@ -193,11 +200,9 @@ packages:
   fluent_ui:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: b5911c0bd4617b35a9440d099e54ce60443a8c1b
-      url: "https://github.com/bmceachnie/fluent_ui.git"
-    source: git
+      path: "../fluent_ui"
+      relative: true
+    source: path
     version: "4.0.3"
   fluentui_system_icons:
     dependency: "direct main"

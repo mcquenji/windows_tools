@@ -64,8 +64,8 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
     showDialog(
       context: context,
       builder: (context) => Dialog(
-        title: t.environmentVariables_delete_title,
-        content: Text(t.environmentVariables_delete_message),
+        title: t.environmentVariables_entry_delete_title,
+        content: Text(t.environmentVariables_entry_delete_message),
         onConfirm: () => controller.removeEntry(entry),
       ),
     );
@@ -97,6 +97,7 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
     return ConditionalWrapper(
       condition: !editMode,
       wrapper: (context, child) {
+        // TODO: use context menu instead of flyout
         return Flyout(
           controller: flyout,
           position: FlyoutPosition.below,
@@ -177,6 +178,13 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
         ),
         falseWidget: (context) => ExpanderCard(
           onPressed: () => controller.enableEntry(entry, !entry.enabled),
+          leading: Tooltip(
+            message: entry.type.tooltip(context),
+            child: Icon(
+              entry.type.icon,
+              color: entry.enabled ? theme.accentColor : theme.disabledColor,
+            ),
+          ),
           title: GestureDetector(
             onDoubleTap: edit,
             child: Text(entry.value),
@@ -191,5 +199,30 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
         ),
       ),
     );
+  }
+}
+
+extension on EnvironmentEntryType {
+  IconData get icon {
+    switch (this) {
+      case EnvironmentEntryType.file:
+        return FluentIcons.document_24_regular;
+      case EnvironmentEntryType.directory:
+        return FluentIcons.folder_24_regular;
+      case EnvironmentEntryType.custom:
+        return FluentIcons.text_field_24_regular;
+    }
+  }
+
+  String tooltip(BuildContext context) {
+    var t = context.t;
+    switch (this) {
+      case EnvironmentEntryType.file:
+        return t.environmentVariables_newEntry_file;
+      case EnvironmentEntryType.directory:
+        return t.environmentVariables_newEntry_directory;
+      case EnvironmentEntryType.custom:
+        return t.environmentVariables_newEntry_custom;
+    }
   }
 }

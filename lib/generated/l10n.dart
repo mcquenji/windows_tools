@@ -262,20 +262,50 @@ class S {
   }
 
   /// `Delete entry?`
-  String get environmentVariables_delete_title {
+  String get environmentVariables_entry_delete_title {
     return Intl.message(
       'Delete entry?',
-      name: 'environmentVariables_delete_title',
+      name: 'environmentVariables_entry_delete_title',
       desc: '',
       args: [],
     );
   }
 
   /// `Are you sure you want to delete this entry? This action cannot be undone.`
-  String get environmentVariables_delete_message {
+  String get environmentVariables_entry_delete_message {
     return Intl.message(
       'Are you sure you want to delete this entry? This action cannot be undone.',
-      name: 'environmentVariables_delete_message',
+      name: 'environmentVariables_entry_delete_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete variable?`
+  String get environmentVariables_variable_delete_title {
+    return Intl.message(
+      'Delete variable?',
+      name: 'environmentVariables_variable_delete_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this variable? This action cannot be undone.`
+  String get environmentVariables_variable_delete_message {
+    return Intl.message(
+      'Are you sure you want to delete this variable? This action cannot be undone.',
+      name: 'environmentVariables_variable_delete_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete variable`
+  String get environmentVariables_variable_delete_tooltip {
+    return Intl.message(
+      'Delete variable',
+      name: 'environmentVariables_variable_delete_tooltip',
       desc: '',
       args: [],
     );

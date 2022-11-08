@@ -32,10 +32,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "environmentVariables_delete":
             MessageLookupByLibrary.simpleMessage("Löschen"),
-        "environmentVariables_delete_message": MessageLookupByLibrary.simpleMessage(
-            "Sind Sie sicher, dass Sie diesen Eintrag löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden."),
-        "environmentVariables_delete_title":
-            MessageLookupByLibrary.simpleMessage("Eintrag löschen?"),
         "environmentVariables_edit":
             MessageLookupByLibrary.simpleMessage("Bearbeiten"),
         "environmentVariables_edit_cancel":

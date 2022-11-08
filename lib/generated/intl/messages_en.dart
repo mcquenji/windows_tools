@@ -37,16 +37,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Copy"),
         "environmentVariables_delete":
             MessageLookupByLibrary.simpleMessage("Delete"),
-        "environmentVariables_delete_message": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to delete this entry? This action cannot be undone."),
-        "environmentVariables_delete_title":
-            MessageLookupByLibrary.simpleMessage("Delete entry?"),
         "environmentVariables_edit":
             MessageLookupByLibrary.simpleMessage("Edit"),
         "environmentVariables_edit_cancel":
             MessageLookupByLibrary.simpleMessage("Cancel"),
         "environmentVariables_edit_save":
             MessageLookupByLibrary.simpleMessage("Save changes"),
+        "environmentVariables_entry_delete_message":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to delete this entry? This action cannot be undone."),
+        "environmentVariables_entry_delete_title":
+            MessageLookupByLibrary.simpleMessage("Delete entry?"),
         "environmentVariables_name": m0,
         "environmentVariables_newEntry":
             MessageLookupByLibrary.simpleMessage("New entry"),
@@ -82,6 +83,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("User Environment Variables"),
         "environmentVariables_toggle_tooltip":
             MessageLookupByLibrary.simpleMessage("Toggle"),
+        "environmentVariables_variable_delete_message":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to delete this variable? This action cannot be undone."),
+        "environmentVariables_variable_delete_title":
+            MessageLookupByLibrary.simpleMessage("Delete variable?"),
+        "environmentVariables_variable_delete_tooltip":
+            MessageLookupByLibrary.simpleMessage("Delete variable"),
         "global_404": MessageLookupByLibrary.simpleMessage("404 Not Found"),
         "global_dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "global_dialog_confirm":

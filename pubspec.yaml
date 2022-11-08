@@ -29,14 +29,19 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bitsdojo_window: ^0.1.5
+  context_menus: ^1.0.2
   file_picker: ^5.2.2
   fluent_ui: ^4.0.3
   fluentui_system_icons: ^1.1.185
   flutter:
     sdk: flutter
   flutter_localized_locales: ^2.0.3
+  flutter_markdown: ^0.6.13
   flutter_riverpod: ^2.1.1
   http: ^0.13.5
+  intl: ^0.17.0
+  markdown: ^6.0.1
   nekolib_ui:
     git:
       url: https://github.com/necodeIT/nekolib.git
@@ -49,16 +54,13 @@ dependencies:
       path: utils
   package_info_plus: ^3.0.1
   system_theme: ^2.0.0
+  url_launcher: ^6.1.6
   win32_registry: ^1.0.2
   window_manager: ^0.2.2
   windows_tools_engine:
     git:
       url: https://github.com/necodeIT/windows-tools.git
       ref: engine
-  flutter_markdown: ^0.6.13
-  url_launcher: ^6.1.6
-  intl: ^0.17.0
-  markdown: ^6.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -69,12 +71,12 @@ dependency_overrides:
   # For development only
   windows_tools_engine:
     path: ../windows-tools-engine
-  # fluent_ui:
-  #   path: ../fluent_ui
-  # Because of missing customizations in fluent_ui upstream
   fluent_ui:
-    git:
-      url: https://github.com/bmceachnie/fluent_ui.git
+    path: ../fluent_ui
+  # Because of missing customizations in fluent_ui upstream
+  # fluent_ui:
+  #   git:
+  #     url: https://github.com/bmceachnie/fluent_ui.git
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

@@ -71,6 +71,19 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
     controller.addEntry(widget.variable.identifier, result.files.first.path!);
   }
 
+  void deleteVariable() {
+    var controller = ref.read(environmentVariablesController);
+
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        content: Text(t.environmentVariables_variable_delete_message),
+        title: t.environmentVariables_variable_delete_title,
+        onConfirm: () => controller.removeVariable(widget.variable.identifier),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var index = ref.watch(environmentVariablesProvider).indexOf(widget.variable);
@@ -92,24 +105,29 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
         size: kExpanderIconSize,
         color: theme.accentColor,
       ),
-      trailing: DropDownButton(
-        title: Text(t.environmentVariables_newEntry),
-        items: [
-          MenuFlyoutItem(
-            leading: const Icon(FluentIcons.folder_24_filled),
-            text: Text(t.environmentVariables_newEntry_directory),
-            onPressed: addDirectory,
+      trailing: Row(
+        children: [
+          DropDownButton(
+            title: Text(t.environmentVariables_newEntry),
+            items: [
+              MenuFlyoutItem(
+                leading: const Icon(FluentIcons.folder_24_filled),
+                text: Text(t.environmentVariables_newEntry_directory),
+                onPressed: addDirectory,
+              ),
+              MenuFlyoutItem(
+                leading: const Icon(FluentIcons.document_24_filled),
+                text: Text(t.environmentVariables_newEntry_file),
+                onPressed: addFile,
+              ),
+              MenuFlyoutItem(
+                leading: const Icon(FluentIcons.text_field_24_filled),
+                text: Text(t.environmentVariables_newEntry_custom),
+                onPressed: addCustom,
+              ),
+            ],
           ),
-          MenuFlyoutItem(
-            leading: const Icon(FluentIcons.document_24_filled),
-            text: Text(t.environmentVariables_newEntry_file),
-            onPressed: addFile,
-          ),
-          MenuFlyoutItem(
-            leading: const Icon(FluentIcons.text_field_24_filled),
-            text: Text(t.environmentVariables_newEntry_custom),
-            onPressed: addCustom,
-          ),
+          NcSpacing.small(),
         ],
       ),
       content: Column(
@@ -121,6 +139,15 @@ class _EnvironmentVariableWidgetState extends ConsumerState<EnvironmentVariableW
               child: TextBox(
                 controller: searchController,
                 placeholder: t.global_search_placeholder,
+              ),
+            ),
+          ),
+          ExpanderCard(
+            title: Text(t.environmentVariables_variable_delete_tooltip),
+            trailing: SizedBox(
+              child: Button(
+                onPressed: deleteVariable,
+                child: Text(t.environmentVariables_variable_delete_tooltip),
               ),
             ),
           ),

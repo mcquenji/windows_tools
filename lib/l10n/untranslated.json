@@ -6,6 +6,11 @@
     "environmentVariables_newVariable_tooltip",
     "environmentVariables_newVariable_placeholder",
     "environmentVariables_newVariable_alreadyExists_title",
-    "environmentVariables_newVariable_alreadyExists_message"
+    "environmentVariables_newVariable_alreadyExists_message",
+    "environmentVariables_entry_delete_title",
+    "environmentVariables_entry_delete_message",
+    "environmentVariables_variable_delete_title",
+    "environmentVariables_variable_delete_message",
+    "environmentVariables_variable_delete_tooltip"
   ]
 }

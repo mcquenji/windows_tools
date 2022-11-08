@@ -107,18 +107,7 @@ class _EnvironmentVariablesRouteState extends ConsumerState<EnvironmentVariables
                 dimension: kPickerHeight,
                 child: Button(
                   onPressed: addVariable,
-                  child: ConditionalWidget(
-                    condition: refreshing,
-                    trueWidget: (context) => const Center(
-                      child: SizedBox.square(
-                        dimension: 14,
-                        child: ProgressRing(
-                          strokeWidth: 2,
-                        ),
-                      ),
-                    ),
-                    falseWidget: (context) => const Icon(FluentIcons.add_24_filled),
-                  ),
+                  child: const Icon(FluentIcons.add_24_filled),
                 ),
               ),
             ),
