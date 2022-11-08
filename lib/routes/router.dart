@@ -109,8 +109,7 @@ class _NavRouterState extends State<NavRouter> {
               NcSpacing.medium(),
               IconButton(
                 icon: const Icon(FluentIcons.dismiss_24_filled),
-                // onPressed: appWindow.close,
-                onPressed: () {},
+                onPressed: appWindow.close,
               ),
             ],
           ),
@@ -150,13 +149,3 @@ class _NavRouterState extends State<NavRouter> {
     );
   }
 }
-
-// class TestNavigationPaneWidget extends NavigationPaneWidget{
-//   @override
-//   Widget build(BuildContext context, NavigationPaneWidgetData data) {
-//     data.
-//     // TODO: implement build
-//     throw UnimplementedError();
-//   }
-
-// }
