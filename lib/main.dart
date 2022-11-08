@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +20,13 @@ void main() async {
       child: App(),
     ),
   );
+
+  doWhenWindowReady(() {
+    Size mySize = appWindow.size;
+    appWindow.size = Size(mySize.width, mySize.height + 0.001);
+    appWindow.size = Size(mySize.width, mySize.height);
+    appWindow.show();
+  });
 }
 
 /// Root app widget.

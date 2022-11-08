@@ -11,6 +11,7 @@
     "environmentVariables_entry_delete_message",
     "environmentVariables_variable_delete_title",
     "environmentVariables_variable_delete_message",
-    "environmentVariables_variable_delete_tooltip"
+    "environmentVariables_variable_delete_tooltip",
+    "global_app_title"
   ]
 }

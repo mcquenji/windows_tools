@@ -510,6 +510,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Windows Tools`
+  String get global_app_title {
+    return Intl.message(
+      'Windows Tools',
+      name: 'global_app_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
