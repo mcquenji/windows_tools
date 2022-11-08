@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "environmentVariables_variable_delete_tooltip":
             MessageLookupByLibrary.simpleMessage("Delete variable"),
         "global_404": MessageLookupByLibrary.simpleMessage("404 Not Found"),
+        "global_app_title":
+            MessageLookupByLibrary.simpleMessage("Windows Tools"),
         "global_dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "global_dialog_confirm":
             MessageLookupByLibrary.simpleMessage("Confirm"),

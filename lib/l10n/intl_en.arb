@@ -97,5 +97,6 @@
     "settings_general_update_patchNotes_title": "{version} Patch notes - {date}",
     "test_title": "Test",
     "global_dialog_confirm": "Confirm",
-    "global_dialog_cancel": "Cancel"
+    "global_dialog_cancel": "Cancel",
+    "global_app_title": "Windows Tools"
 }

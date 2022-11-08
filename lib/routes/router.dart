@@ -21,6 +21,12 @@ class _NavRouterState extends State<NavRouter> {
     });
   }
 
+  void maximizeOrRestore() {
+    setState(() {
+      appWindow.maximizeOrRestore();
+    });
+  }
+
   PaneItem item({required String title, required IconData icon, required Widget body}) => PaneItem(
         title: Text(
           title,
@@ -30,8 +36,14 @@ class _NavRouterState extends State<NavRouter> {
         body: body,
       );
 
+  final buttonColors = WindowButtonColors(iconNormal: const Color(0xFF805306), mouseOver: const Color(0xFFF6A00C), mouseDown: const Color(0xFF805306), iconMouseOver: const Color(0xFF805306), iconMouseDown: const Color(0xFFFFD500));
+
+  final closeButtonColors = WindowButtonColors(mouseOver: const Color(0xFFD32F2F), mouseDown: const Color(0xFFB71C1C), iconNormal: const Color(0xFF805306), iconMouseOver: Colors.white);
+
   @override
   Widget build(BuildContext context) {
+    appWindow.title = t.global_app_title;
+
     var items = [
       item(
         icon: FluentIcons.person_24_filled,
@@ -68,9 +80,40 @@ class _NavRouterState extends State<NavRouter> {
     var title = (allItems[selected].title as Text).data ?? t.global_404; // dirty hack to get the title, i know...
 
     return NavigationView(
-      appBar: const NavigationAppBar(
+      appBar: NavigationAppBar(
         automaticallyImplyLeading: false,
-        height: NcSpacing.largeSpacing * 1.5,
+        height: NcSpacing.xlSpacing * 1.5,
+        title: WindowTitleBarBox(
+          child: Row(
+            children: [
+              Expanded(
+                child: MoveWindow(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      t.global_app_title,
+                      // style: theme.typography.subtitle,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(FluentIcons.subtract_24_filled),
+                onPressed: appWindow.minimize,
+              ),
+              NcSpacing.medium(),
+              IconButton(
+                icon: Icon(appWindow.isMaximized ? FluentIcons.square_multiple_24_regular : FluentIcons.maximize_24_filled),
+                onPressed: maximizeOrRestore,
+              ),
+              NcSpacing.medium(),
+              IconButton(
+                icon: const Icon(FluentIcons.dismiss_24_filled),
+                onPressed: appWindow.close,
+              ),
+            ],
+          ),
+        ),
       ),
       paneBodyBuilder: (selectedPaneItemBody) => Padding(
         padding: const EdgeInsets.only(
@@ -106,13 +149,3 @@ class _NavRouterState extends State<NavRouter> {
     );
   }
 }
-
-// class TestNavigationPaneWidget extends NavigationPaneWidget{
-//   @override
-//   Widget build(BuildContext context, NavigationPaneWidgetData data) {
-//     data.
-//     // TODO: implement build
-//     throw UnimplementedError();
-//   }
-
-// }
