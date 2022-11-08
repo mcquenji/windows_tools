@@ -520,6 +520,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Contribute`
+  String get settings_contribute {
+    return Intl.message(
+      'Contribute',
+      name: 'settings_contribute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fork`
+  String get settings_contribute_fork {
+    return Intl.message(
+      'Fork',
+      name: 'settings_contribute_fork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open issue on GitHub`
+  String get settings_contribute_openIssue {
+    return Intl.message(
+      'Open issue on GitHub',
+      name: 'settings_contribute_openIssue',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

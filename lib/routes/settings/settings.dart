@@ -45,6 +45,26 @@ class _SettingsRouteState extends ConsumerState<SettingsRoute> {
             ],
           ),
         ),
+        NcSpacing.small(),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            t.settings_contribute,
+            style: context.theme.typography.subtitle,
+          ),
+        ),
+        NcSpacing.small(),
+        ExpanderCard(
+          title: Text(t.settings_contribute_openIssue),
+          trailing: const Icon(FluentIcons.open_24_filled),
+          onPressed: () => launchUrl(Uri.parse("https://github.com/necodeIT/windows_tools/issues/new")),
+        ),
+        NcSpacing.xs(),
+        ExpanderCard(
+          title: Text(t.settings_contribute_fork),
+          trailing: const Icon(FluentIcons.open_24_filled),
+          onPressed: () => launchUrl(Uri.parse("https://github.com/necodeIT/windows_tools/fork")),
+        ),
       ],
     );
   }

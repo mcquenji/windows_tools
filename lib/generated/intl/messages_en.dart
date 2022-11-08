@@ -99,6 +99,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "global_search_placeholder":
             MessageLookupByLibrary.simpleMessage("Search..."),
         "global_seearch_label": MessageLookupByLibrary.simpleMessage("Search"),
+        "settings_contribute":
+            MessageLookupByLibrary.simpleMessage("Contribute"),
+        "settings_contribute_fork":
+            MessageLookupByLibrary.simpleMessage("Fork"),
+        "settings_contribute_openIssue":
+            MessageLookupByLibrary.simpleMessage("Open issue on GitHub"),
         "settings_general": MessageLookupByLibrary.simpleMessage("General"),
         "settings_general_language":
             MessageLookupByLibrary.simpleMessage("Language"),

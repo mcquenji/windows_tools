@@ -12,6 +12,9 @@
     "environmentVariables_variable_delete_title",
     "environmentVariables_variable_delete_message",
     "environmentVariables_variable_delete_tooltip",
-    "global_app_title"
+    "global_app_title",
+    "settings_contribute",
+    "settings_contribute_fork",
+    "settings_contribute_openIssue"
   ]
 }

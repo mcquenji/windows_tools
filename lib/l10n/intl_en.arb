@@ -98,5 +98,8 @@
     "test_title": "Test",
     "global_dialog_confirm": "Confirm",
     "global_dialog_cancel": "Cancel",
-    "global_app_title": "Windows Tools"
+    "global_app_title": "Windows Tools",
+    "settings_contribute": "Contribute",
+    "settings_contribute_fork": "Fork",
+    "settings_contribute_openIssue": "Open issue on GitHub"
 }

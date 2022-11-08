@@ -21,12 +21,7 @@ void main() async {
     ),
   );
 
-  doWhenWindowReady(() {
-    Size mySize = appWindow.size;
-    appWindow.size = Size(mySize.width, mySize.height + 0.001);
-    appWindow.size = Size(mySize.width, mySize.height);
-    appWindow.show();
-  });
+  doWhenWindowReady(appWindow.show);
 }
 
 /// Root app widget.

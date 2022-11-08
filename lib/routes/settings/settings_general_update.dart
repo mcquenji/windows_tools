@@ -54,10 +54,10 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
             ),
           ),
           falseWidget: (context) => Button(
+            onPressed: info.updateAvailable ? updater.installUpdate : () => updater.checkForUpdates(kVersion),
             child: Text(
               info.updateAvailable ? t.settings_general_update_install : t.settings_general_update_checkNow,
             ),
-            onPressed: () => info.updateAvailable ? updater.installUpdate() : updater.checkForUpdates(kVersion),
           ),
         ),
         content: Column(
