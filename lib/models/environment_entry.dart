@@ -20,6 +20,9 @@ class EnvironmentEntry with _$EnvironmentEntry {
 
     /// The identifier of the parent variable.
     required String parent,
+
+    /// The name of the entry.
+    @Default(null) String? name,
   }) = _EnvironmentEntry;
 
   /// Whether the entry is disabled.

@@ -159,4 +159,26 @@ abstract class IEnvironmentService {
 
     return newVariables;
   }
+
+  /// Renames the variable with the given [identifier] to [newName] in the [variables].
+  ///
+  /// If the variable does not exist, nothing happens.
+  List<EnvironmentVariable> renameVariable(List<EnvironmentVariable> variables, String identifier, String newName) {
+    final index = getVariableIndex(variables, identifier);
+
+    if (index == -1) return variables;
+
+    var newVariables = variables.toList();
+
+    var variable = variables[index];
+
+    if (variable.name == newName) return variables;
+
+    newVariables[index] = variable.copyWith(name: newName);
+
+    return newVariables;
+  }
+
+  /// Deletes the given [variable] from the system.
+  void deleteVariable(EnvironmentVariable variable);
 }

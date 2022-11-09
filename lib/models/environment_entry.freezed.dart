@@ -29,6 +29,9 @@ mixin _$EnvironmentEntry {
   /// The identifier of the parent variable.
   String get parent => throw _privateConstructorUsedError;
 
+  /// The name of the entry.
+  String? get name => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EnvironmentEntryCopyWith<EnvironmentEntry> get copyWith =>
@@ -41,7 +44,7 @@ abstract class $EnvironmentEntryCopyWith<$Res> {
           EnvironmentEntry value, $Res Function(EnvironmentEntry) then) =
       _$EnvironmentEntryCopyWithImpl<$Res, EnvironmentEntry>;
   @useResult
-  $Res call({String value, bool enabled, String parent});
+  $Res call({String value, bool enabled, String parent, String? name});
 }
 
 /// @nodoc
@@ -60,6 +63,7 @@ class _$EnvironmentEntryCopyWithImpl<$Res, $Val extends EnvironmentEntry>
     Object? value = null,
     Object? enabled = null,
     Object? parent = null,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       value: null == value
@@ -74,6 +78,10 @@ class _$EnvironmentEntryCopyWithImpl<$Res, $Val extends EnvironmentEntry>
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as String,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +94,7 @@ abstract class _$$_EnvironmentEntryCopyWith<$Res>
       __$$_EnvironmentEntryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String value, bool enabled, String parent});
+  $Res call({String value, bool enabled, String parent, String? name});
 }
 
 /// @nodoc
@@ -103,6 +111,7 @@ class __$$_EnvironmentEntryCopyWithImpl<$Res>
     Object? value = null,
     Object? enabled = null,
     Object? parent = null,
+    Object? name = freezed,
   }) {
     return _then(_$_EnvironmentEntry(
       value: null == value
@@ -117,6 +126,10 @@ class __$$_EnvironmentEntryCopyWithImpl<$Res>
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as String,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -125,7 +138,10 @@ class __$$_EnvironmentEntryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EnvironmentEntry extends _EnvironmentEntry {
   const _$_EnvironmentEntry(
-      {required this.value, required this.enabled, required this.parent})
+      {required this.value,
+      required this.enabled,
+      required this.parent,
+      this.name = null})
       : super._();
 
   factory _$_EnvironmentEntry.fromJson(Map<String, dynamic> json) =>
@@ -143,9 +159,14 @@ class _$_EnvironmentEntry extends _EnvironmentEntry {
   @override
   final String parent;
 
+  /// The name of the entry.
+  @override
+  @JsonKey()
+  final String? name;
+
   @override
   String toString() {
-    return 'EnvironmentEntry(value: $value, enabled: $enabled, parent: $parent)';
+    return 'EnvironmentEntry(value: $value, enabled: $enabled, parent: $parent, name: $name)';
   }
 
   @override
@@ -155,12 +176,13 @@ class _$_EnvironmentEntry extends _EnvironmentEntry {
             other is _$_EnvironmentEntry &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.enabled, enabled) || other.enabled == enabled) &&
-            (identical(other.parent, parent) || other.parent == parent));
+            (identical(other.parent, parent) || other.parent == parent) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, value, enabled, parent);
+  int get hashCode => Object.hash(runtimeType, value, enabled, parent, name);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +202,8 @@ abstract class _EnvironmentEntry extends EnvironmentEntry {
   const factory _EnvironmentEntry(
       {required final String value,
       required final bool enabled,
-      required final String parent}) = _$_EnvironmentEntry;
+      required final String parent,
+      final String? name}) = _$_EnvironmentEntry;
   const _EnvironmentEntry._() : super._();
 
   factory _EnvironmentEntry.fromJson(Map<String, dynamic> json) =
@@ -198,6 +221,10 @@ abstract class _EnvironmentEntry extends EnvironmentEntry {
 
   /// The identifier of the parent variable.
   String get parent;
+  @override
+
+  /// The name of the entry.
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$_EnvironmentEntryCopyWith<_$_EnvironmentEntry> get copyWith =>

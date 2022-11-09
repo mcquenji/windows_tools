@@ -70,9 +70,19 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
     _disk.save(state);
   }
 
-  /// Updates the given [entry].
-  void updateEntry(EnvironmentEntry entry, String value) {
-    state = _env.replaceEntry(state, entry, entry.copyWith(value: value));
+  /// Cahnges the value and name of the given [entry] to [value] and [name].
+  ///
+  /// If [name] is null, the name will not be changed.
+  /// If [value] is null, the value will not be changed.
+  void updateEntry(EnvironmentEntry entry, {String? value, String? name}) {
+    state = _env.replaceEntry(
+      state,
+      entry,
+      entry.copyWith(
+        value: value ?? entry.value,
+        name: name != null && name.isEmpty ? null : name ?? entry.name, // Only clear the name if it's empty. If it's null, leave it as is.
+      ),
+    );
 
     var index = _env.getVariableIndex(state, entry.parent);
 
@@ -102,7 +112,35 @@ class EnvironmentVariablesProvider extends StateNotifier<List<EnvironmentVariabl
   ///
   /// If the variable does not exist, nothing happens.
   void removeVariable(String identifier) {
+    var index = _env.getVariableIndex(state, identifier);
+
+    if (index == -1) return;
+
+    var variable = state[index];
+
+    _env.deleteVariable(variable);
+
     state = _env.removeVariable(state, identifier);
+
+    _disk.save(state);
+  }
+
+  /// Renames the variable with the given [identifier] to [name].
+  ///
+  /// If the variable does not exist, nothing happens.
+  void renameVariable(String identifier, String name) {
+    var index = _env.getVariableIndex(state, identifier);
+
+    if (index == -1) return;
+
+    var oldVariable = state[index];
+
+    state = _env.renameVariable(state, identifier, name);
+
+    var newVariable = state[index];
+
+    _env.setEnvironmentVariable(newVariable);
+    _env.deleteVariable(oldVariable);
 
     _disk.save(state);
   }

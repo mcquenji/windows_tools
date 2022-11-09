@@ -49,4 +49,11 @@ class EnvironmentService extends IEnvironmentService {
 
     log("Set environment variable '${variable.name}' to '$entries'");
   }
+
+  @override
+  deleteVariable(variable) {
+    variable.context.reg.deleteValue(variable.name);
+
+    log("Deleted environment variable '${variable.name}'");
+  }
 }

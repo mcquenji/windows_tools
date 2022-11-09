@@ -11,6 +11,7 @@ _$_EnvironmentEntry _$$_EnvironmentEntryFromJson(Map<String, dynamic> json) =>
       value: json['value'] as String,
       enabled: json['enabled'] as bool,
       parent: json['parent'] as String,
+      name: json['name'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$_EnvironmentEntryToJson(_$_EnvironmentEntry instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$_EnvironmentEntryToJson(_$_EnvironmentEntry instance) =>
       'value': instance.value,
       'enabled': instance.enabled,
       'parent': instance.parent,
+      'name': instance.name,
     };
