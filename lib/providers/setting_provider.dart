@@ -25,6 +25,8 @@ class SettingsProvider extends StateNotifier<Settings> {
 
     if (settings != null) {
       state = settings;
+    } else {
+      await _disk.save(state);
     }
   }
 
