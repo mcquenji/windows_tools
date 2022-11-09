@@ -200,9 +200,11 @@ packages:
   fluent_ui:
     dependency: "direct main"
     description:
-      path: "../fluent_ui"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: ec0f40541e5df0fda91c8d5398b4cab0268a74b0
+      url: "https://github.com/bmceachnie/fluent_ui.git"
+    source: git
     version: "4.0.3"
   fluentui_system_icons:
     dependency: "direct main"
@@ -687,7 +689,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   win32_registry:
     dependency: "direct main"
     description:
@@ -705,9 +707,11 @@ packages:
   windows_tools_engine:
     dependency: "direct main"
     description:
-      path: "../windows-tools-engine"
-      relative: true
-    source: path
+      path: "."
+      ref: engine
+      resolved-ref: "3d5cb0a7e7939b8c07255ded33533c0004cd477d"
+      url: "https://github.com/necodeIT/windows-tools.git"
+    source: git
     version: "0.0.1"
   xdg_directories:
     dependency: transitive
