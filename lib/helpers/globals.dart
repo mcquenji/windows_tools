@@ -1,7 +1,7 @@
 part of windows_tools_helpers;
 
 /// The current version of the app.
-const kVersion = '0.0.2';
+const kVersion = '0.1.0';
 
 /// Current version name.
 const kVersionName = 'Alpha $kVersion';
