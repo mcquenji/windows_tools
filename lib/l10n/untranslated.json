@@ -1,5 +1,6 @@
 {
   "de": [
+    "environmentVariables_rename",
     "environmentVariables_open",
     "environmentVariables_copy",
     "environmentVariables_newVariable_title",

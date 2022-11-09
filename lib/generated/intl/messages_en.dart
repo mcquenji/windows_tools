@@ -76,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Open"),
         "environmentVariables_refresh_tooltip":
             MessageLookupByLibrary.simpleMessage("Refresh"),
+        "environmentVariables_rename":
+            MessageLookupByLibrary.simpleMessage("Rename"),
         "environmentVariables_title_system":
             MessageLookupByLibrary.simpleMessage(
                 "System Environment Variables"),

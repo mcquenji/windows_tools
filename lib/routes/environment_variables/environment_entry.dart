@@ -17,21 +17,29 @@ class EnvironmentEntryWidget extends ConsumerStatefulWidget {
 
 class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget> {
   bool editMode = false;
+  bool editName = false;
   var flyout = FlyoutController();
 
-  final editController = TextEditingController();
+  final valueController = TextEditingController();
+  final nameController = TextEditingController();
 
   Offset cursorPos = Offset.zero;
 
-  edit() {
+  rename() => edit(true);
+
+  editValue() => edit(false);
+
+  edit(bool rename) {
     flyout.close();
     var variables = ref.read(environmentVariablesProvider);
 
     var entry = variables[widget.variableId].entries[widget.entryId];
 
     setState(() {
+      editName = rename;
       editMode = true;
-      editController.text = entry.value;
+      valueController.text = entry.value;
+      nameController.text = entry.name ?? '';
     });
   }
 
@@ -43,7 +51,7 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
 
     setState(() {
       editMode = false;
-      controller.updateEntry(entry, editController.text);
+      controller.updateEntry(entry, value: valueController.text, name: nameController.text);
     });
   }
 
@@ -117,16 +125,16 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
                     ),
                   ),
                 FlyoutListTile(
-                  text: Text(t.environmentVariables_copy),
-                  onPressed: copy,
+                  text: Text(t.environmentVariables_edit),
+                  onPressed: editValue,
                   icon: Icon(
-                    FluentIcons.copy_24_regular,
+                    FluentIcons.edit_24_regular,
                     color: theme.accentColor,
                   ),
                 ),
                 FlyoutListTile(
-                  text: Text(t.environmentVariables_edit),
-                  onPressed: edit,
+                  text: Text(t.environmentVariables_rename),
+                  onPressed: rename,
                   icon: Icon(
                     FluentIcons.rename_24_regular,
                     color: theme.accentColor,
@@ -140,6 +148,14 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
                     color: theme.accentColor,
                   ),
                 ),
+                FlyoutListTile(
+                  text: Text(t.environmentVariables_copy),
+                  onPressed: copy,
+                  icon: Icon(
+                    FluentIcons.copy_24_regular,
+                    color: theme.accentColor,
+                  ),
+                ),
               ],
             ),
           ),
@@ -150,7 +166,7 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
         condition: editMode,
         trueWidget: (context) => ExpanderCard(
           title: TextBox(
-            controller: editController,
+            controller: editName ? nameController : valueController,
             onSubmitted: (_) => save(),
             autofocus: true,
           ),
@@ -177,6 +193,7 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
           ),
         ),
         falseWidget: (context) => ExpanderCard(
+          crossAxisAlignment: CrossAxisAlignment.center,
           onPressed: () => controller.enableEntry(entry, !entry.enabled),
           leading: Tooltip(
             message: entry.type.tooltip(context),
@@ -185,10 +202,8 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
               color: entry.enabled ? theme.accentColor : theme.disabledColor,
             ),
           ),
-          title: GestureDetector(
-            onDoubleTap: edit,
-            child: Text(entry.value),
-          ),
+          title: entry.name == null ? Text(entry.value) : Text(entry.name!),
+          subtitle: entry.name == null ? null : Text(entry.value),
           trailing: Tooltip(
             message: t.environmentVariables_toggle_tooltip,
             child: ToggleSwitch(

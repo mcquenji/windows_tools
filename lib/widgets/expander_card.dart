@@ -23,6 +23,9 @@ class ExpanderCard extends StatelessWidget {
   /// The background color of the content.
   final ButtonState<Color>? backgroundColor;
 
+  /// How to align the children.
+  final CrossAxisAlignment crossAxisAlignment;
+
   /// A card that resides in an [Expander].
   const ExpanderCard({
     Key? key,
@@ -33,6 +36,7 @@ class ExpanderCard extends StatelessWidget {
     this.backgroundColor,
     this.subtitle,
     this.onPressed,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
   }) : super(key: key);
 
   @override
@@ -54,6 +58,7 @@ class ExpanderCard extends StatelessWidget {
             child: Padding(
               padding: contentPadding,
               child: ListTile(
+                crossAxisAlignment: crossAxisAlignment,
                 tileColor: ButtonState.all(Colors.transparent),
                 onPressed: onPressed,
                 leading: leading,

@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `Rename`
+  String get environmentVariables_rename {
+    return Intl.message(
+      'Rename',
+      name: 'environmentVariables_rename',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Open`
   String get environmentVariables_open {
     return Intl.message(

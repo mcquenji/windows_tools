@@ -57,6 +57,7 @@
     "environmentVariables_delete": "Delete",
     "environmentVariables_toggle_tooltip": "Toggle",
     "environmentVariables_edit": "Edit",
+    "environmentVariables_rename": "Rename",
     "environmentVariables_open": "Open",
     "environmentVariables_copy": "Copy",
     "environmentVariables_edit_save": "Save changes",
