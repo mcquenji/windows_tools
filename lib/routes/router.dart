@@ -12,7 +12,7 @@ class NavRouter extends StatefulWidget {
   State<NavRouter> createState() => _NavRouterState();
 }
 
-class _NavRouterState extends State<NavRouter> {
+class _NavRouterState extends State<NavRouter> with WindowListener {
   int selected = 0;
 
   void select(int index) {
@@ -25,6 +25,38 @@ class _NavRouterState extends State<NavRouter> {
     setState(() {
       appWindow.maximizeOrRestore();
     });
+  }
+
+  @override
+  void onWindowMaximize() {
+    setState(() {});
+  }
+
+  @override
+  void onWindowUnmaximize() {
+    setState(() {});
+  }
+
+  @override
+  void onWindowMinimize() {
+    setState(() {});
+  }
+
+  @override
+  void onWindowRestore() {
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    windowManager.addListener(this);
+  }
+
+  @override
+  void dispose() {
+    windowManager.removeListener(this);
+    super.dispose();
   }
 
   PaneItem item({required String title, required IconData icon, required Widget body}) => PaneItem(

@@ -5,13 +5,14 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:system_theme/system_theme.dart';
+import 'package:window_manager/window_manager.dart';
 import 'package:windows_tools/helpers.dart';
 import 'package:windows_tools/routes.dart';
 import 'package:windows_tools_engine/windows_tools_engine.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await windowManager.ensureInitialized();
   await initGlobals();
 
   // runThemedApp(appBuilder: App.builder);
