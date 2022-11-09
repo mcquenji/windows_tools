@@ -49,5 +49,22 @@
     "environmentVariables_title_user": "Benutzer Umgebungsvariablen",
     "environmentVariables_title_system": "System Umgebungsvariablen",
     "settings_general_update_upToDate_lastChecked": "Zuletzt überprüft: {date}",
-    "settings_general_update_patchNotes_title": "{version} Update - {date} (Englisch)"
+    "settings_general_update_patchNotes_title": "{version} Update - {date} (Englisch)",
+    "environmentVariables_rename": "Umbenennen",
+    "environmentVariables_open": "Öffnen",
+    "environmentVariables_copy": "Kopieren",
+    "environmentVariables_newVariable_title": "Neue Variable erstellen",
+    "environmentVariables_newVariable_tooltip": "Neue Variable hinzufügen",
+    "environmentVariables_newVariable_placeholder": "Variablenname...",
+    "environmentVariables_newVariable_alreadyExists_title": "Variable existiert bereits",
+    "environmentVariables_newVariable_alreadyExists_message": "Eine Variable mit dem Namen \"{name}\" existiert bereits.",
+    "environmentVariables_entry_delete_title": "Eintrag löschen?",
+    "environmentVariables_entry_delete_message": "Sind Sie sicher, dass Sie diesen Eintrag löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "environmentVariables_variable_delete_title": "Variable löschen?",
+    "environmentVariables_variable_delete_message": "Sind Sie sicher, dass Sie diese Variable löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "environmentVariables_variable_delete_tooltip": "Variable löschen",
+    "global_app_title": "Windows Tools",
+    "settings_contribute": "Beitragen",
+    "settings_contribute_fork": "Fork",
+    "settings_contribute_openIssue": "Issue auf GitHub öffnen"
 }

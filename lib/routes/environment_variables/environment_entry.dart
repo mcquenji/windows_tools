@@ -111,7 +111,7 @@ class _EnvironmentEntryWidgetState extends ConsumerState<EnvironmentEntryWidget>
           position: FlyoutPosition.below,
           openMode: FlyoutOpenMode.secondaryPress,
           content: (context) => FlyoutContent(
-            constraints: const BoxConstraints(maxWidth: 150), // any way to make this dynamicly fit items?
+            constraints: const BoxConstraints(maxWidth: 160), // any way to make this dynamicly fit items?
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

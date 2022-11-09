@@ -22,14 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(name, amount) => "${name} (${amount})";
 
-  static String m4(name) =>
+  static String m1(name) =>
       "A variable with the name \"${name}\" already exists.";
 
-  static String m1(progress) => "Installing update (${progress}%)...";
+  static String m2(progress) => "Installing update (${progress}%)...";
 
-  static String m2(version, date) => "${version} Patch notes - ${date}";
+  static String m3(version, date) => "${version} Patch notes - ${date}";
 
-  static String m3(date) => "Last checked: ${date}";
+  static String m4(date) => "Last checked: ${date}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -61,7 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Directory"),
         "environmentVariables_newEntry_file":
             MessageLookupByLibrary.simpleMessage("File"),
-        "environmentVariables_newVariable_alreadyExists_message": m4,
+        "environmentVariables_newVariable_alreadyExists_message": m1,
         "environmentVariables_newVariable_alreadyExists_title":
             MessageLookupByLibrary.simpleMessage("Variable already exists"),
         "environmentVariables_newVariable_placeholder":
@@ -119,14 +119,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "An unexpected error occurred. Please try again later."),
         "settings_general_update_install":
             MessageLookupByLibrary.simpleMessage("Install update"),
-        "settings_general_update_installing": m1,
+        "settings_general_update_installing": m2,
         "settings_general_update_newVersion":
             MessageLookupByLibrary.simpleMessage("A new version is available!"),
-        "settings_general_update_patchNotes_title": m2,
+        "settings_general_update_patchNotes_title": m3,
         "settings_general_update_upToDate":
             MessageLookupByLibrary.simpleMessage(
                 "You are using the latest version!"),
-        "settings_general_update_upToDate_lastChecked": m3,
+        "settings_general_update_upToDate_lastChecked": m4,
         "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
         "test_title": MessageLookupByLibrary.simpleMessage("Test")
       };
