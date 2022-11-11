@@ -6,20 +6,8 @@ class SettingsDiskService extends IDiskService<Settings> {
   const SettingsDiskService() : super('settings');
 
   @override
-  load() async {
-    if (!await _exists(fileName)) return null;
-
-    final data = await _load(fileName);
-
-    final json = jsonDecode(data);
-
-    return Settings.fromJson(json);
-  }
+  decode(data) => Settings.fromJson(jsonDecode(data));
 
   @override
-  save(data) async {
-    final json = jsonEncode(data);
-
-    return _save(fileName, json);
-  }
+  encode(data) => jsonEncode(data.toJson());
 }

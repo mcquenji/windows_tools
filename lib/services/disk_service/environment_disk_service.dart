@@ -6,20 +6,12 @@ class EnvironmentDiskService extends IDiskService<List<EnvironmentVariable>> {
   const EnvironmentDiskService() : super('environment_variables');
 
   @override
-  load() async {
-    if (!await _exists(fileName)) return null;
-
-    final data = await _load(fileName);
-
+  decode(data) {
     final json = jsonDecode(data);
 
     return (json as List).map((e) => EnvironmentVariable.fromJson(e)).toList();
   }
 
   @override
-  save(data) async {
-    final json = jsonEncode(data);
-
-    return _save(fileName, json);
-  }
+  encode(data) => jsonEncode(data.map((e) => e.toJson()).toList());
 }

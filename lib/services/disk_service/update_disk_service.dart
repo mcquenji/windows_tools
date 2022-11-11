@@ -6,20 +6,8 @@ class UpdateDiskService extends IDiskService<UpdateInfo> {
   const UpdateDiskService() : super('update_info');
 
   @override
-  load() async {
-    if (!await _exists(fileName)) return null;
-
-    final data = await _load(fileName);
-
-    final json = jsonDecode(data);
-
-    return UpdateInfo.fromJson(json);
-  }
+  decode(data) => UpdateInfo.fromJson(jsonDecode(data));
 
   @override
-  save(data) async {
-    final json = jsonEncode(data);
-
-    return _save(fileName, json);
-  }
+  encode(data) => jsonEncode(data.toJson());
 }

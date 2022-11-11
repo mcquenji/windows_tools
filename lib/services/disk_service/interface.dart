@@ -76,10 +76,25 @@ abstract class IDiskService<T> {
   }
 
   /// Saves the given data to disk
-  Future<void> save(T data);
+  Future<void> save(T data) async => _save(fileName, encode(data));
 
   /// Loads the data from disk.
   ///
   /// Returns null if no data was found.
-  Future<T?> load();
+  Future<T?> load() async {
+    if (!await _exists(fileName)) return null;
+
+    final data = await _load(fileName);
+
+    return decode(data);
+  }
+
+  /// Deletes the data from disk.
+  Future<void> delete() => _delete(fileName);
+
+  /// Converts the given [data] to [T].
+  T decode(String data);
+
+  /// Converts [T] to a [String].
+  String encode(T data);
 }
