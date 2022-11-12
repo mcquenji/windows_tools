@@ -62,7 +62,7 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
 
   Brightness? brightness;
 
-  Color get scaffoldColor => theme.scaffoldBackgroundColor.withOpacity(0.9);
+  Color opacity(Color color) => color.withOpacity(0.7);
 
   PaneItem item({required String title, required IconData icon, required Widget body}) => PaneItem(
         title: Text(
@@ -80,9 +80,8 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (brightness != theme.brightness) {
         Window.setEffect(
-          effect: isWindows11 ? WindowEffect.acrylic : WindowEffect.disabled,
+          effect: isWindows11 ? WindowEffect.mica : WindowEffect.disabled,
           dark: theme.brightness.isDark,
-          color: scaffoldColor,
         );
         brightness = theme.brightness;
       }
@@ -128,9 +127,10 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
       wrapper: (context, child) => FluentTheme(
         data: theme.copyWith(
           scaffoldBackgroundColor: Colors.transparent,
-          navigationPaneTheme: const NavigationPaneThemeData(
-            backgroundColor: Colors.transparent,
+          navigationPaneTheme: NavigationPaneThemeData(
+            backgroundColor: opacity(theme.scaffoldBackgroundColor),
           ),
+          cardColor: opacity(theme.cardColor),
         ),
         child: child,
       ),

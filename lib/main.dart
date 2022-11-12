@@ -21,13 +21,9 @@ void main() async {
     ),
   );
 
-  doWhenWindowReady(appWindow.show);
+  Window.hideWindowControls();
 
-  await windowManager.waitUntilReadyToShow();
-  await windowManager.setTitleBarStyle(
-    TitleBarStyle.hidden,
-    windowButtonVisibility: false,
-  );
+  doWhenWindowReady(appWindow.show);
 }
 
 /// Root app widget.
