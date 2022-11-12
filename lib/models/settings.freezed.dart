@@ -23,7 +23,12 @@ mixin _$Settings {
   /// The current language.
   @JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
   Locale get language => throw _privateConstructorUsedError;
+
+  /// Whether to check for updates on startup.
   bool get autoCheckUpdates => throw _privateConstructorUsedError;
+
+  /// List of enabled modules.
+  List<Modules> get modules => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +44,8 @@ abstract class $SettingsCopyWith<$Res> {
   $Res call(
       {@JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
           Locale language,
-      bool autoCheckUpdates});
+      bool autoCheckUpdates,
+      List<Modules> modules});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
   $Res call({
     Object? language = null,
     Object? autoCheckUpdates = null,
+    Object? modules = null,
   }) {
     return _then(_value.copyWith(
       language: null == language
@@ -67,6 +74,10 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.autoCheckUpdates
           : autoCheckUpdates // ignore: cast_nullable_to_non_nullable
               as bool,
+      modules: null == modules
+          ? _value.modules
+          : modules // ignore: cast_nullable_to_non_nullable
+              as List<Modules>,
     ) as $Val);
   }
 }
@@ -81,7 +92,8 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
   $Res call(
       {@JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
           Locale language,
-      bool autoCheckUpdates});
+      bool autoCheckUpdates,
+      List<Modules> modules});
 }
 
 /// @nodoc
@@ -97,6 +109,7 @@ class __$$_SettingsCopyWithImpl<$Res>
   $Res call({
     Object? language = null,
     Object? autoCheckUpdates = null,
+    Object? modules = null,
   }) {
     return _then(_$_Settings(
       language: null == language
@@ -107,6 +120,10 @@ class __$$_SettingsCopyWithImpl<$Res>
           ? _value.autoCheckUpdates
           : autoCheckUpdates // ignore: cast_nullable_to_non_nullable
               as bool,
+      modules: null == modules
+          ? _value._modules
+          : modules // ignore: cast_nullable_to_non_nullable
+              as List<Modules>,
     ));
   }
 }
@@ -117,8 +134,10 @@ class _$_Settings extends _Settings {
   _$_Settings(
       {@JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
           this.language = const Locale("en"),
-      this.autoCheckUpdates = true})
-      : super._();
+      this.autoCheckUpdates = true,
+      final List<Modules> modules = const <Modules>[]})
+      : _modules = modules,
+        super._();
 
   factory _$_Settings.fromJson(Map<String, dynamic> json) =>
       _$$_SettingsFromJson(json);
@@ -127,13 +146,26 @@ class _$_Settings extends _Settings {
   @override
   @JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
   final Locale language;
+
+  /// Whether to check for updates on startup.
   @override
   @JsonKey()
   final bool autoCheckUpdates;
 
+  /// List of enabled modules.
+  final List<Modules> _modules;
+
+  /// List of enabled modules.
+  @override
+  @JsonKey()
+  List<Modules> get modules {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_modules);
+  }
+
   @override
   String toString() {
-    return 'Settings(language: $language, autoCheckUpdates: $autoCheckUpdates)';
+    return 'Settings(language: $language, autoCheckUpdates: $autoCheckUpdates, modules: $modules)';
   }
 
   @override
@@ -144,12 +176,14 @@ class _$_Settings extends _Settings {
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.autoCheckUpdates, autoCheckUpdates) ||
-                other.autoCheckUpdates == autoCheckUpdates));
+                other.autoCheckUpdates == autoCheckUpdates) &&
+            const DeepCollectionEquality().equals(other._modules, _modules));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, language, autoCheckUpdates);
+  int get hashCode => Object.hash(runtimeType, language, autoCheckUpdates,
+      const DeepCollectionEquality().hash(_modules));
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +203,8 @@ abstract class _Settings extends Settings {
   factory _Settings(
       {@JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
           final Locale language,
-      final bool autoCheckUpdates}) = _$_Settings;
+      final bool autoCheckUpdates,
+      final List<Modules> modules}) = _$_Settings;
   _Settings._() : super._();
 
   factory _Settings.fromJson(Map<String, dynamic> json) = _$_Settings.fromJson;
@@ -180,7 +215,13 @@ abstract class _Settings extends Settings {
   @JsonKey(fromJson: _localeFromJson, toJson: _localeToJson)
   Locale get language;
   @override
+
+  /// Whether to check for updates on startup.
   bool get autoCheckUpdates;
+  @override
+
+  /// List of enabled modules.
+  List<Modules> get modules;
   @override
   @JsonKey(ignore: true)
   _$$_SettingsCopyWith<_$_Settings> get copyWith =>

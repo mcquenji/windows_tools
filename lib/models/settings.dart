@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:windows_tools_engine/windows_tools_engine.dart';
 
 part 'settings.freezed.dart';
 part 'settings.g.dart';
@@ -14,8 +15,16 @@ class Settings with _$Settings {
   factory Settings({
     /// The current language.
     @JsonKey(fromJson: _localeFromJson, toJson: _localeToJson) @Default(Locale("en")) Locale language,
+
+    /// Whether to check for updates on startup.
     @Default(true) bool autoCheckUpdates,
+
+    /// List of enabled modules.
+    @Default(<Modules>[]) List<Modules> modules,
   }) = _Settings;
+
+  /// Whether the given [module] is enabled.
+  bool moduleIsEnabled(Modules module) => modules.contains(module);
 
   /// Settings from json.
   factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);

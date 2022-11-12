@@ -24,8 +24,10 @@ import 'models/settings.dart';
 import 'models/environment_entry.dart';
 import 'models/update_info.dart';
 import 'models/environment_variable.dart';
+import 'models/java_version_info.dart';
 part 'models/environment_variable_context.dart';
 part 'models/environment_entry_types.dart';
+part 'models/module_types.dart';
 
 // Providers
 
