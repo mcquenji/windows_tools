@@ -155,6 +155,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.8"
+  device_info_plus:
+    dependency: "direct main"
+    description:
+      name: device_info_plus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.0"
+  device_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: device_info_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.0.0"
   dio:
     dependency: transitive
     description:
@@ -218,6 +232,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_acrylic:
+    dependency: "direct main"
+    description:
+      name: flutter_acrylic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0+2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -707,11 +728,9 @@ packages:
   windows_tools_engine:
     dependency: "direct main"
     description:
-      path: "."
-      ref: engine
-      resolved-ref: "3d5cb0a7e7939b8c07255ded33533c0004cd477d"
-      url: "https://github.com/necodeIT/windows-tools.git"
-    source: git
+      path: "../windows-tools-engine"
+      relative: true
+    source: path
     version: "0.0.1"
   xdg_directories:
     dependency: transitive

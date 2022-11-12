@@ -1,5 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:system_theme/system_theme.dart';
@@ -11,9 +12,9 @@ import 'package:windows_tools_engine/windows_tools_engine.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+  await Window.initialize();
   await initGlobals();
 
-  // runThemedApp(appBuilder: App.builder);
   runApp(
     const ProviderScope(
       child: App(),
@@ -21,6 +22,12 @@ void main() async {
   );
 
   doWhenWindowReady(appWindow.show);
+
+  await windowManager.waitUntilReadyToShow();
+  await windowManager.setTitleBarStyle(
+    TitleBarStyle.hidden,
+    windowButtonVisibility: false,
+  );
 }
 
 /// Root app widget.

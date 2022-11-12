@@ -50,6 +50,7 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
   @override
   void initState() {
     super.initState();
+
     windowManager.addListener(this);
   }
 
@@ -58,6 +59,10 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
     windowManager.removeListener(this);
     super.dispose();
   }
+
+  Brightness? brightness;
+
+  Color get scaffoldColor => theme.scaffoldBackgroundColor.withOpacity(0.9);
 
   PaneItem item({required String title, required IconData icon, required Widget body}) => PaneItem(
         title: Text(
@@ -68,13 +73,20 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
         body: body,
       );
 
-  final buttonColors = WindowButtonColors(iconNormal: const Color(0xFF805306), mouseOver: const Color(0xFFF6A00C), mouseDown: const Color(0xFF805306), iconMouseOver: const Color(0xFF805306), iconMouseDown: const Color(0xFFFFD500));
-
-  final closeButtonColors = WindowButtonColors(mouseOver: const Color(0xFFD32F2F), mouseDown: const Color(0xFFB71C1C), iconNormal: const Color(0xFF805306), iconMouseOver: Colors.white);
-
   @override
   Widget build(BuildContext context) {
     appWindow.title = t.global_app_title;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (brightness != theme.brightness) {
+        Window.setEffect(
+          effect: isWindows11 ? WindowEffect.acrylic : WindowEffect.disabled,
+          dark: theme.brightness.isDark,
+          color: scaffoldColor,
+        );
+        brightness = theme.brightness;
+      }
+    });
 
     var items = [
       item(
@@ -111,72 +123,84 @@ class _NavRouterState extends State<NavRouter> with WindowListener {
 
     var title = (allItems[selected].title as Text).data ?? t.global_404; // dirty hack to get the title, i know...
 
-    return NavigationView(
-      appBar: NavigationAppBar(
-        automaticallyImplyLeading: false,
-        height: NcSpacing.xlSpacing * 1.5,
-        title: WindowTitleBarBox(
-          child: Row(
-            children: [
-              Expanded(
-                child: MoveWindow(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      t.global_app_title,
-                      // style: theme.typography.subtitle,
+    return ConditionalWrapper(
+      condition: isWindows11,
+      wrapper: (context, child) => FluentTheme(
+        data: theme.copyWith(
+          scaffoldBackgroundColor: Colors.transparent,
+          navigationPaneTheme: const NavigationPaneThemeData(
+            backgroundColor: Colors.transparent,
+          ),
+        ),
+        child: child,
+      ),
+      child: NavigationView(
+        appBar: NavigationAppBar(
+          automaticallyImplyLeading: false,
+          height: NcSpacing.xlSpacing * 1.5,
+          title: WindowTitleBarBox(
+            child: Row(
+              children: [
+                Expanded(
+                  child: MoveWindow(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        t.global_app_title,
+                        // style: theme.typography.subtitle,
+                      ),
                     ),
                   ),
                 ),
+                IconButton(
+                  icon: const Icon(FluentIcons.subtract_24_filled),
+                  onPressed: appWindow.minimize,
+                ),
+                NcSpacing.medium(),
+                IconButton(
+                  icon: Icon(appWindow.isMaximized ? FluentIcons.square_multiple_24_regular : FluentIcons.maximize_24_filled),
+                  onPressed: maximizeOrRestore,
+                ),
+                NcSpacing.medium(),
+                IconButton(
+                  icon: const Icon(FluentIcons.dismiss_24_filled),
+                  onPressed: appWindow.close,
+                ),
+              ],
+            ),
+          ),
+        ),
+        paneBodyBuilder: (selectedPaneItemBody) => Padding(
+          padding: const EdgeInsets.only(
+            left: NcSpacing.mediumSpacing,
+            right: NcSpacing.mediumSpacing,
+          ),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  title,
+                  style: theme.typography.title,
+                ),
               ),
-              IconButton(
-                icon: const Icon(FluentIcons.subtract_24_filled),
-                onPressed: appWindow.minimize,
-              ),
-              NcSpacing.medium(),
-              IconButton(
-                icon: Icon(appWindow.isMaximized ? FluentIcons.square_multiple_24_regular : FluentIcons.maximize_24_filled),
-                onPressed: maximizeOrRestore,
-              ),
-              NcSpacing.medium(),
-              IconButton(
-                icon: const Icon(FluentIcons.dismiss_24_filled),
-                onPressed: appWindow.close,
+              NcSpacing.large(),
+              Expanded(
+                child: selectedPaneItemBody ??
+                    Center(
+                      child: Text(t.global_404),
+                    ),
               ),
             ],
           ),
         ),
-      ),
-      paneBodyBuilder: (selectedPaneItemBody) => Padding(
-        padding: const EdgeInsets.only(
-          left: NcSpacing.mediumSpacing,
-          right: NcSpacing.mediumSpacing,
+        contentShape: const RoundedRectangleBorder(side: BorderSide.none),
+        pane: NavigationPane(
+          selected: selected,
+          onChanged: select,
+          items: [...items],
+          footerItems: footerItems,
         ),
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                title,
-                style: theme.typography.title,
-              ),
-            ),
-            NcSpacing.large(),
-            Expanded(
-              child: selectedPaneItemBody ??
-                  Center(
-                    child: Text(t.global_404),
-                  ),
-            ),
-          ],
-        ),
-      ),
-      contentShape: const RoundedRectangleBorder(side: BorderSide.none),
-      pane: NavigationPane(
-        selected: selected,
-        onChanged: select,
-        items: [...items],
-        footerItems: footerItems,
       ),
     );
   }

@@ -27,5 +27,15 @@ const double kExpanderProgressRingWidth = 3.5;
 /// Default formatter for [DateTime] objects.
 final kDateFormatter = DateFormat('dd.MM.yyyy kk:mm');
 
+/// Windows information.
+///
+/// Initialized in [initGlobals].
+late final WindowsDeviceInfo windowsInfo;
+
+/// Whether the app is running on Windows 11.
+bool get isWindows11 => windowsInfo.productName.contains('11');
+
 /// Initializes the globals.
-Future<void> initGlobals() async {}
+Future<void> initGlobals() async {
+  windowsInfo = await DeviceInfoPlugin().windowsInfo;
+}

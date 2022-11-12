@@ -61,6 +61,8 @@ dependencies:
     git:
       url: https://github.com/necodeIT/windows-tools.git
       ref: engine
+  flutter_acrylic: ^1.0.0+2
+  device_info_plus: ^8.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -69,8 +71,8 @@ dev_dependencies:
 
 dependency_overrides:
   # For development only
-  # windows_tools_engine:
-  #   path: ../windows-tools-engine
+  windows_tools_engine:
+    path: ../windows-tools-engine
   # fluent_ui:
   #   path: ../fluent_ui
   # Because of missing customizations in fluent_ui upstream
