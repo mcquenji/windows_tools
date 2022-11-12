@@ -12,7 +12,8 @@ class SettingsGeneralUpdateWidget extends ConsumerStatefulWidget {
 class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpdateWidget> {
   @override
   void dispose() {
-    windowManager.setProgressBar(0);
+    /// TODO: figure out why this crashes the app
+    // windowManager.setProgressBar(0);
 
     super.dispose();
   }
@@ -24,7 +25,8 @@ class _SettingsGeneralUpdateWidgetState extends ConsumerState<SettingsGeneralUpd
     var settings = ref.watch(settingsProvider);
     var controller = ref.watch(settingsController);
 
-    windowManager.setProgressBar(info.installProgress != null ? info.installProgress! / 100 : 0);
+    /// TODO: figure out why this crashes the app
+    // windowManager.setProgressBar(info.installProgress != null ? info.installProgress! / 100 : 0);
 
     return ConditionalWidget(
       condition: info.installing,
