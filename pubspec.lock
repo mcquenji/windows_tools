@@ -226,7 +226,7 @@ packages:
       name: fluentui_system_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.185"
+    version: "1.1.186"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -544,7 +544,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.5"
+    version: "0.27.6"
   screen_retriever:
     dependency: transitive
     description:
@@ -728,9 +728,11 @@ packages:
   windows_tools_engine:
     dependency: "direct main"
     description:
-      path: "../windows-tools-engine"
-      relative: true
-    source: path
+      path: "."
+      ref: engine
+      resolved-ref: "0c25fae27711dccf9e2778064ec6427c94dd96b9"
+      url: "https://github.com/necodeIT/windows-tools.git"
+    source: git
     version: "0.0.1"
   xdg_directories:
     dependency: transitive
